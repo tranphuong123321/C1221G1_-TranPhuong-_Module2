@@ -9,7 +9,7 @@ public class Sum {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Nhập vào số dòng của ma trận: ");
+        System.out.println("Nhập vào số hàng của ma trận: ");
         m = scanner.nextInt();
         System.out.println("Nhập vào số cột của ma trận: ");
         n = scanner.nextInt();
@@ -31,7 +31,6 @@ public class Sum {
 
         for (int i = 0; i < m; i++) {
         }
-
         System.out.println("Phần tử lớn nhất trong ma trận = " + tong);
     }
 }
