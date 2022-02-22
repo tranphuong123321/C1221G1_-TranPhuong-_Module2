@@ -1,7 +1,7 @@
 package bai_1_introduction_to_java.thuc_hanh.su_dung_toan_tu;
 
 import java.util.Scanner;
-public class Use_the_operator {
+public class UseTheOperator {
     public static void main(String[] args) {
         float width;
         float height;

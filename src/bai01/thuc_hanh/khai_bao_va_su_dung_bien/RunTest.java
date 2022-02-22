@@ -1,6 +1,6 @@
 package bai_1_introduction_to_java.thuc_hanh.khai_bao_va_su_dung_bien;
 
-public class Main {
+public class RunTest {
     public static void main(String[] args) {
         int i =10;
         float f =20.5f;

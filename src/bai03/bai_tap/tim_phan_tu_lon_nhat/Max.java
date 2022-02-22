@@ -10,19 +10,19 @@ public class Max {
         m = scanner.nextInt();
         System.out.println("Nhập vào số cột của ma trận: ");
         n = scanner.nextInt();
-        int A[][] = new int[m][n];
+        int arrays[][] = new int[m][n];
         System.out.println("Nhập các phần tử cho ma trận: ");
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print("A[" + i + "]["+ j + "] = ");
-                A[i][j] = scanner.nextInt();
+                System.out.print("arrays[" + i + "]["+ j + "] = ");
+                arrays[i][j] = scanner.nextInt();
             }
         }
-        int max = A[0][0];
+        int max = arrays[0][0];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (max < A[i][j]) {
-                    max = A[i][j];
+                if (max < arrays[i][j]) {
+                    max = arrays[i][j];
                 }
             }
         }

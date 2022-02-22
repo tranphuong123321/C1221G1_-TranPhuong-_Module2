@@ -1,37 +1,33 @@
 package bai_3_mang_va_phuong_thuc_trong_java.bai_tap.tinh_tong_trong_cot;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sum {
     public static void main(String[] args) {
-        // khai báo số dòng và số cột của ma trận
-        int m, n;
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Nhập vào số hàng của ma trận: ");
-        m = scanner.nextInt();
-        System.out.println("Nhập vào số cột của ma trận: ");
-        n = scanner.nextInt();
-
-        // khai báo ma trận A có m dòng, n cột
-        int A[][] = new int[m][n];
-
-        System.out.println("Nhập các phần tử cho ma trận: ");
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print("A[" + i + "]["+ j + "] = ");
-                A[i][j] = scanner.nextInt();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập số hàng");
+        int row = Integer.parseInt(sc.nextLine());
+        System.out.println("Nhập số cột");
+        int col = Integer.parseInt(sc.nextLine());
+        double[][] array = new double[row][col];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                System.out.println("Nhập giá trị phần tử tại vị trí hàng số :"+i+" cột số :"+j);
+                array[i][j] = Double.parseDouble(sc.nextLine());
             }
         }
-
-        // tìm phần tử có giá trị lớn nhất trong ma trận
-        // giả sử phần tử tại vị trí (0,0) là phần tử lớn nhất
-        int tong = 0 ;
-
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(Arrays.toString(array[i]));
         }
-        System.out.println("Phần tử lớn nhất trong ma trận = " + tong);
+        System.out.println("Nhập cột muốn tính tổng");
+        int input = Integer.parseInt(sc.nextLine());
+        double sum = 0.0d;
+        for(int i = 0; i<array.length;i++){
+            sum+=array[i][input];
+        }
+
+        System.out.println("Tổng giá trị của mảng tại cột "+ input + " là "+ sum);
     }
 }
 

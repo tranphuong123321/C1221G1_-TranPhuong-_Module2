@@ -2,7 +2,7 @@ package bai_3_mang_va_phuong_thuc_trong_java.bai_tap.xoa_phan_tu_khoi_mang;
 
 import java.util.Scanner;
 
-public class Main {
+public class Run {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int[] delete;

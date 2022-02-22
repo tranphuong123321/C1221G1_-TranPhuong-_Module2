@@ -18,12 +18,12 @@ public class StopWatch {
         return endTime;
     }
 
-    public long start() {
-        return new Date().getTime();
+    public  void  start() {
+        this.startTime = new Date().getTime();
     }
 
-    public long stop() {
-        return this.endTime = new Date().getTime();
+    public void stop() {
+         this.endTime = new Date().getTime();
 
     }
 

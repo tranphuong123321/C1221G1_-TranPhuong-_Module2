@@ -1,18 +1,26 @@
 package bai04.bai_tap.xay_dung_fan;
 
 public class Fan {
-    private final String[] SPEED_NAME = {"LOW","MEDIUM","FAST"};
-    private final int[] SPEED_LEVEL = {1,2,3};
+    private final int LOW = 1;
+    private final int MEDIUM = 2;
+    private final int FAST = 3;
     private int speed;
     private boolean on;
     private double radius;
     private String color;
 
-    public Fan(){
-        this.speed = SPEED_LEVEL[0];
+    public Fan() {
+        this.speed = 1;
         this.on = false;
         this.radius = 5;
         this.color = "blue";
+    }
+
+    public Fan(int speed, boolean on, double radius, String color) {
+        this.speed = speed;
+        this.on = on;
+        this.radius = radius;
+        this.color = color;
     }
 
     public int getSpeed() {
@@ -49,16 +57,16 @@ public class Fan {
 
     @Override
     public String toString() {
-        if(this.isOn()){
+        if (this.isOn()) {
             return "Fan is on," +
-                    " speed=" + SPEED_NAME[this.getSpeed()-1] +
+                    " speed=" + this.getSpeed() +
                     ", radius=" + this.getRadius() +
-                    ", color=" + this.getColor()  +
+                    ", color=" + this.getColor() +
                     '\n';
-        }else{
-            return "Fan is off, speed = "+ SPEED_NAME[this.getSpeed()-1] +
-                    " , radius= "+this.getRadius()+
-                    " , color = "+this.getColor()+
+        } else {
+            return "Fan is off, speed = " + this.getSpeed() +
+                    " , radius= " + this.getRadius() +
+                    " , color = " + this.getColor() +
                     "\n";
         }
     }
@@ -71,7 +79,7 @@ public class Fan {
         fan1.setColor("yellow");
         fan1.setRadius(10);
         fan2.setSpeed(1);
-        System.out.println("fan1"+fan1.toString());
-        System.out.println("fan2"+fan2.toString());
+        System.out.println(fan1.toString());
+        System.out.println(fan2.toString());
     }
 }
