@@ -29,23 +29,16 @@ public class Circle {
     public void setColor(String color) {
         this.color = color;
     }
-
-    public double getArea() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("nhap mau sac");
-        String color = scanner.nextLine();
-        this.setColor(color);
-        System.out.println("nhap ban kinh");
-        double radius = Double.parseDouble(scanner.nextLine());
-        this.setRadius(radius);
-        return radius * radius * 3.14;
+    public double getArea(){
+        return this.radius*this.radius*3.14;
     }
 
     @Override
     public String toString() {
-        return "Circle{" +"Area= "+ getArea() +
-                ", radius=" + this.getRadius() +
-                ", color='" + this.color + '\'' +
+        return "Circle{" +
+                "radius=" + radius +
+                ", color='" + color + '\'' +
                 '}';
     }
 }
+
