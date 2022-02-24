@@ -9,16 +9,18 @@ public class RunTest {
         Cylinder cylinder = new Cylinder();
         Scanner scanner = new Scanner(System.in);
         while (check) {
-            System.out.println("1.Tinh dien tich hinh tron");
-            System.out.println("2.Tinh the tich hinh tru");
+            System.out.println("1.Nhap thong tin cua hinh tron");
+            System.out.println("2.Nhap thong tin cua hinh tru");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    System.out.println("dien tich hinh tron la: " + circle.getArea());
+                    System.out.println("Thong tin cua hinh tron: " + circle.toString());
                     break;
                 case 2:
-                    System.out.println("the tich hinh tru la: " + cylinder.getVolume());
+                    System.out.println("Thong tin cua hinh tru: " + cylinder.toString());
                     break;
+                default:
+                    System.exit(0);
             }
         }
     }
