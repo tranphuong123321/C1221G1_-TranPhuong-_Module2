@@ -1,15 +1,51 @@
 package bai_tap_oop.service.impl;
 
+import bai_tap_oop.models.OTo;
 import bai_tap_oop.models.XeMay;
 import bai_tap_oop.models.XeTai;
 import bai_tap_oop.service.IXeTaiService;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class XeTaiImpl implements IXeTaiService {
     static List<XeTai> xeTaiList = new ArrayList<>();
+    public void write() {
+
+        try {
+            FileWriter fileWriter = new FileWriter("src/bai_tap_oop/data/XeTaiCsv");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (XeTai xeTai:xeTaiList) {
+                bufferedWriter.write(xeTai.getBienKiemSoat() + "," + xeTai.getTenHangSanXuat() + "," + xeTai.getNamSanXuat() + "," + xeTai.getChuSoHuu() + "," + xeTai.getTaiTrong());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void read(){
+        try {
+            FileReader fileReader=new FileReader("src/bai_tap_oop/data/XeTaiCsv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String[]    data;
+            String line;
+            XeTai xeTai;
+            while ((line =bufferedReader.readLine())!=null){
+                data =line.split(",");
+                xeTai=new XeTai(data[0],data[1],Integer.parseInt(data[2]),data[3],Integer.parseInt(data[4]));
+                xeTaiList.add(xeTai);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     public void themMoiXeTai() {
@@ -44,7 +80,6 @@ public class XeTaiImpl implements IXeTaiService {
             System.out.println("tai trong khong the am, hay nhap lai");
             taiTrong=Integer.parseInt(scanner.nextLine());
         }
-
         XeTai xeTai = new XeTai(bienKiemSoat, hangSanXuat, namSanXuat, chuSoHuu, taiTrong);
         xeTaiList.add(xeTai);
     }
