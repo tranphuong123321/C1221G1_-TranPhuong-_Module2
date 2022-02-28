@@ -35,7 +35,6 @@ public class FuramaController {
                 case 4:
                     bookingManagerment();
                     break;
-
             }
         }
     }

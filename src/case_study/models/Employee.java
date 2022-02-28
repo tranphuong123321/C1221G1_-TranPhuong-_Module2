@@ -48,7 +48,14 @@ public class Employee extends Person {
     @Override
     public String toString() {
         return "Employee{" +
-                "level='" + level + '\'' +
+                "id=" + getId() +
+                ", name='" + getName() + '\'' +
+                ", birthDay='" + getBirthDay() + '\'' +
+                ", gender='" + getGender() + '\'' +
+                ", idCard=" + getIdCard() +
+                ", numberPhone=" + getNumberPhone() +
+                ", email='" + getEmail()+ '\'' +
+                ", level='" + level + '\'' +
                 ", position='" + position + '\'' +
                 ", salary=" + salary +
                 '}';
