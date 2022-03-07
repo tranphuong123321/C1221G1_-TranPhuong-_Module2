@@ -1,15 +1,54 @@
 package case_study.service.impl;
 
 import case_study.models.Customer;
+import case_study.models.Employee;
 import case_study.models.Person;
 import case_study.service.IServiceCustomer;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CustomerImpl implements IServiceCustomer {
     static List<Customer> customerList = new ArrayList<>();
+
+    public void writeCsv() {
+        try {
+            FileWriter fileWriter = new FileWriter("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\CustomerCsv");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Customer customer : customerList) {
+                bufferedWriter.write(customer.getId() + "," + customer.getName() + "," + customer.getBirthDay() + "," + customer.getGender() + "," + customer.getIdCard() + "," + customer.getNumberPhone() + "," + customer.getEmail() + "," + customer.getTypeOfGuest() + "," + customer.getAddress());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Customer> readerCustomer() {
+        try {
+            FileReader fileReader = new FileReader("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\CustomerCsv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String[] data;
+            String line;
+            // id, String name, int birthDay, String gender, int idCard, int numberPhone, String email, String typeOfGuest, String address
+            while ((line = bufferedReader.readLine()) != null) {
+                data = line.split(",");
+                Customer customer = new Customer(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]), Integer.parseInt(data[5]), data[6], data[7], data[8]);
+                customerList.add(customer);
+
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return customerList;
+    }
+
 
     @Override
     public void addNew() {
@@ -77,7 +116,6 @@ public class CustomerImpl implements IServiceCustomer {
             customerList.add(customer);
             break;
         }
-
     }
 
 
@@ -142,6 +180,7 @@ public class CustomerImpl implements IServiceCustomer {
                         System.out.println("sua dia chi");
                         String fixAddress = scanner.nextLine();
                         customer.setAddress(fixAddress);
+                        break;
 
 
                 }

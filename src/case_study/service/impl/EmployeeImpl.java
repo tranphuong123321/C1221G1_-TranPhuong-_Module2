@@ -1,14 +1,54 @@
 package case_study.service.impl;
 
+import case_study.models.Customer;
 import case_study.models.Employee;
 import case_study.service.IServiceEmployee;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeImpl implements IServiceEmployee {
     static List<Employee> employeeList = new ArrayList<>();
+
+    static {
+        employeeList = readerEmployee();
+    }
+
+    public void writeCsv() {
+        try {
+            FileWriter fileWriter = new FileWriter("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\EmployeeCsv");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Employee employee : employeeList) {
+                bufferedWriter.write(employee.getId() + "," + employee.getName() + "," + employee.getBirthDay() + "," + employee.getGender() + "," + employee.getGender() + "," + employee.getNumberPhone() + "," + employee.getEmail() + "," + employee.getLevel() + "," + employee.getPosition() + "," + employee.getSalary());
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Employee> readerEmployee() {
+        try {
+            FileReader fileReader = new FileReader("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\EmployeeCsv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String[] data;
+            String line;
+            //  int id, String name, int birthDay, String gender, int idCard, int numberPhone, String email, String level, String position, int salary
+            while ((line = bufferedReader.readLine()) != null) {
+                data = line.split(",");
+                Employee employee = new Employee(Integer.parseInt(data[0]), data[1], Integer.parseInt(data[2]), data[3], Integer.parseInt(data[4]), Integer.parseInt(data[5]), data[6], data[7], data[8], Integer.parseInt(data[9]));
+                employeeList.add(employee);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+        return employeeList;
+    }
 
 
     @Override
@@ -101,7 +141,11 @@ public class EmployeeImpl implements IServiceEmployee {
             int salary = Integer.parseInt(scanner.nextLine());
             Employee employee = new Employee(id, name, birthDay, gender, idCard, numberPhone, email, level, position, salary);
             employeeList.add(employee);
+            writeCsv();
             break;
+
+
+
         }
     }
 
@@ -117,7 +161,66 @@ public class EmployeeImpl implements IServiceEmployee {
             if (employee.getId() == fixId) {
                 check = true;
                 System.out.println("Ban muon sua cai gi");
-                System.out.println("Ban muon sua cai gi");
+                System.out.println("1. sua ten");
+                System.out.println("2. sua ngay sinh");
+                System.out.println("3. sua gioi tinh");
+                System.out.println("4. sua CMND");
+                System.out.println("5. sua so dien thoai");
+                System.out.println("6. sua email");
+                System.out.println("7. sua trinh do");
+                System.out.println("8. sua vi tri");
+                System.out.println("9. sua luong");
+                int choice=Integer.parseInt(scanner.nextLine());
+                switch (choice){
+                    case 1:
+                        System.out.println("sua ten");
+                        String fixName=scanner.nextLine();
+                        employee.setName(fixName);
+                        break;
+                    case 2:
+                        System.out.println("sua ngay sinh");
+                        int fixBirthDay=Integer.parseInt(scanner.nextLine());
+                        employee.setBirthDay(fixBirthDay);
+                        break;
+                    case 3:
+                        System.out.println("sua gioi tinh");
+                        String fixGenDer=scanner.nextLine();
+                        employee.setGender(fixGenDer);
+                        break;
+                    case 4:
+                        System.out.println("sua CMND");
+                        int fixIdCard=Integer.parseInt(scanner.nextLine());
+                        employee.setIdCard(fixIdCard);
+                        break;
+                    case 5:
+                        System.out.println("sua so dien thoai");
+                        int fixNumberPhone=Integer.parseInt(scanner.nextLine());
+                        employee.setNumberPhone(fixNumberPhone);
+                        break;
+                    case 6:
+                        System.out.println("sua mail");
+                        String fixMail=scanner.nextLine();
+                        employee.setEmail(fixMail);
+                        break;
+                    case 7:
+                        System.out.println("sua trinh do");
+                        String fixLevel=scanner.nextLine();
+                        employee.setLevel(fixLevel);
+                        break;
+                    case 8:
+                        System.out.println("sua vi tri");
+                        String fixPosition=scanner.nextLine();
+                        employee.setPosition(fixPosition);
+                        break;
+                    case 9:
+                        System.out.println("sua luong");
+                        int fixSalary=Integer.parseInt(scanner.nextLine());
+                        employee.setSalary(fixSalary);
+                        break;
+
+
+                }
+
 
 
             }

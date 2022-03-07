@@ -2,6 +2,7 @@ package case_study.controller;
 
 import case_study.service.impl.CustomerImpl;
 import case_study.service.impl.EmployeeImpl;
+import case_study.service.impl.FacilityImpl;
 
 import java.util.Scanner;
 
@@ -88,6 +89,7 @@ public class FuramaController {
     }
 
     public void facilityManagement() {
+        FacilityImpl facility=new FacilityImpl();
         System.out.println("1\tDisplay list facility");
         System.out.println("2\tAdd new facility");
         System.out.println("3\tDisplay list facility maintenance");
@@ -96,6 +98,31 @@ public class FuramaController {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
+                facility.displayListFacility();
+                break;
+            case 2:
+                System.out.println("1.Add Villa");
+                System.out.println("2.Add House");
+                System.out.println("3.Add Room");
+                choice=Integer.parseInt(scanner.nextLine());
+                switch (choice){
+                    case 1:
+                        facility.addVilla();
+                        break;
+                    case 2:
+                        facility.addRoom();
+                        break;
+                    case 3:
+                        facility.addHouse();
+                        break;
+
+                }
+            case 3:
+                facility.displayListMaintenance();
+                break;
+            case 4:
+                displayMainMenu();
+                break;
         }
     }
 
