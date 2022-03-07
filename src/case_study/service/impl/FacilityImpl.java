@@ -77,17 +77,18 @@ public class FacilityImpl implements IServiceFacility {
         }
         return entry;
     }
-    public  static Map<Facility,Integer>readRoom(){
-        Map<Facility,Integer> entry=new LinkedHashMap<>();
+
+    public static Map<Facility, Integer> readRoom() {
+        Map<Facility, Integer> entry = new LinkedHashMap<>();
         try {
-            FileReader fileReader=new FileReader("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\RoomCsv");
-            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            FileReader fileReader = new FileReader("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\RoomCsv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             String[] data;
             String line;
-            while ((line = bufferedReader.readLine())!=null){
-                data=line.split(",");
-                Room room= new Room(data[0],Integer.parseInt(data[1]),Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4],data[5]);
-                entry.put(room,0);
+            while ((line = bufferedReader.readLine()) != null) {
+                data = line.split(",");
+                Room room = new Room(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4], data[5]);
+                entry.put(room, 0);
             }
             bufferedReader.close();
         } catch (FileNotFoundException e) {
@@ -97,24 +98,25 @@ public class FacilityImpl implements IServiceFacility {
         }
         return entry;
     }
-    public static Map<Facility,Integer> readHouse(){
-        Map<Facility,Integer>entry= new LinkedHashMap<>();
+
+    public static Map<Facility, Integer> readHouse() {
+        Map<Facility, Integer> entry = new LinkedHashMap<>();
         try {
-            FileReader fileReader=new FileReader("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\HouseCsv");
-            BufferedReader bufferedReader=new BufferedReader(fileReader);
+            FileReader fileReader = new FileReader("D:\\code gym\\C1221G1_TranPhuong_Module2\\src\\case_study\\data\\HouseCsv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             String[] data;
             String line;
-            while ((line = bufferedReader.readLine())!=null){
-                data=line.split(",");
-                House house=new House(data[0],data[0],data[0],data[0],data[0],data[0],data[0],data[0],data[0],data[0],data[0],);
-
+            while ((line = bufferedReader.readLine()) != null) {
+                data = line.split(",");
+                House house = new House(data[0], Integer.parseInt(data[1]), Integer.parseInt(data[2]), Integer.parseInt(data[3]), data[4], data[5], Integer.parseInt(data[6]));
+                entry.put(house, 0);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return entry;
     }
 
 
