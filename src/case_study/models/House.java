@@ -38,12 +38,12 @@ public class House extends Facility{
     @Override
     public String toString() {
         return "House{" +
-                "serviceName='" + getServiceName() + '\'' +
+                ", serviceName='" + getServiceName() + '\'' +
                 ", usableArea=" + getUsableArea() +
                 ", rentalCosts=" + getRentalType() +
                 ", maximumNumberOfPeople=" + getMaximumNumberOfPeople() +
                 ", rentalType='" + getRentalType() + '\'' +
-                "roomStandard='" + roomStandard + '\'' +
+                ", roomStandard='" + roomStandard + '\'' +
                 ", numberOfFloors=" + numberOfFloors +
                 '}';
     }

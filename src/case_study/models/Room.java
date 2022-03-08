@@ -26,7 +26,7 @@ private  String freeServiceIncluded;
     @Override
     public String toString() {
         return "Room{" +
-                "serviceName='" + getServiceName() + '\'' +
+                ", serviceName='" + getServiceName() + '\'' +
                 ", usableArea=" + getUsableArea() +
                 ", rentalCosts=" + getRentalCosts() +
                 ", maximumNumberOfPeople=" + getMaximumNumberOfPeople() +

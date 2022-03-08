@@ -1,8 +1,6 @@
 package case_study.controller;
 
-import case_study.service.impl.CustomerImpl;
-import case_study.service.impl.EmployeeImpl;
-import case_study.service.impl.FacilityImpl;
+import case_study.service.impl.*;
 
 import java.util.Scanner;
 
@@ -110,10 +108,10 @@ public class FuramaController {
                         facility.addVilla();
                         break;
                     case 2:
-                        facility.addRoom();
+                        facility.addHouse();
                         break;
                     case 3:
-                        facility.addHouse();
+                        facility.addRoom();
                         break;
 
                 }
@@ -127,6 +125,8 @@ public class FuramaController {
     }
 
     public void bookingManagerment() {
+        BookingImpl booking=new BookingImpl();
+        ConstractImpl constract=new ConstractImpl();
         System.out.println("1.\tAdd new booking");
         System.out.println("2.\tDisplay list booking");
         System.out.println("3.\tCreate new constracts");
@@ -137,6 +137,38 @@ public class FuramaController {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
+                System.out.println("1.Book Villa");
+                System.out.println("2.Book House");
+                System.out.println("3.Book Room");
+                 choice= Integer.parseInt(scanner.nextLine());
+                 switch (choice){
+                     case 1:
+                         booking.bookVilla();
+                         break;
+                     case 2:
+                         booking.bookHouse();
+                         break;
+                     case 3:
+                         booking.bookRoom();
+                         break;
+
+                 }
+            case 2:
+                booking.displayBooking();
+                break;
+            case 3:
+                constract.creatConstract();
+                break;
+            case 4:
+                constract.displayConstract();
+                break;
+            case 5:
+                constract.editConstract();
+                break;
+            case 6:
+                displayMainMenu();
+                break;
+
 
         }
     }

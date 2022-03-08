@@ -16,7 +16,6 @@ public class FacilityImpl implements IServiceFacility {
 
     static {
         readVilla();
-
         readRoom();
         readHouse();
     }
@@ -36,8 +35,6 @@ public class FacilityImpl implements IServiceFacility {
                     bufferedWriterVilla.write(villa.getServiceName() + "," + villa.getUsableArea() + "," + villa.getRentalCosts() + "," + villa.getMaximumNumberOfPeople() + "," + villa.getRentalType() + "," + villa.getRoomStandard() + "," + villa.getPoolArea() + "," + villa.getNumberOfFloors());
                     bufferedWriterVilla.newLine();
                     bufferedWriterVilla.close();
-
-
                 } else if (element.getKey() instanceof House) {
                     House house = (House) element.getKey();
                     bufferedWriterHouse.write(house.getServiceName() + "," + house.getUsableArea() + "," + house.getRentalCosts() + "," + house.getMaximumNumberOfPeople() + "," + house.getRentalType() + "," + house.getRoomStandard() + "," + house.getNumberOfFloors());
@@ -49,12 +46,10 @@ public class FacilityImpl implements IServiceFacility {
                     bufferedWriterRoom.newLine();
                     bufferedWriterRoom.close();
                 }
-
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public static Map<Facility, Integer> readVilla() {
@@ -142,6 +137,8 @@ public class FacilityImpl implements IServiceFacility {
         int numberOfFloors = Integer.parseInt(scanner.nextLine());
         Villa villa = new Villa(serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, roomStandard, poolArea, numberOfFloors);
         facilityIntegerMap.put(villa, 0);
+        writeCsv();
+
 
     }
 
@@ -162,6 +159,7 @@ public class FacilityImpl implements IServiceFacility {
         String freeServiceIncluded = scanner.nextLine();
         Room room = new Room(serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, freeServiceIncluded);
         facilityIntegerMap.put(room, 0);
+        writeCsv();
     }
 
     @Override
@@ -183,6 +181,7 @@ public class FacilityImpl implements IServiceFacility {
         int numberOfFloors = Integer.parseInt(scanner.nextLine());
         House house = new House(serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType, roomStandard, numberOfFloors);
         facilityIntegerMap.put(house, 0);
+        writeCsv();
     }
 
     @Override
@@ -190,7 +189,6 @@ public class FacilityImpl implements IServiceFacility {
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
             System.out.println("dich vu: " + element.getKey() + " " + "so lan da thue: " + element.getValue());
         }
-
     }
 
     @Override

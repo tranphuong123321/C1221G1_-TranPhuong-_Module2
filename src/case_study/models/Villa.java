@@ -54,7 +54,7 @@ public class Villa extends Facility{
                 ", rentalCosts=" + getRentalCosts() +
                 ", maximumNumberOfPeople=" + getMaximumNumberOfPeople() +
                 ", rentalType='" + getRentalType() + '\'' +
-                "roomStandard='" + roomStandard + '\'' +
+                ", roomStandard='" + roomStandard + '\'' +
                 ", poolArea=" + poolArea +
                 ", numberOfFloors=" + numberOfFloors +
                 '}';
