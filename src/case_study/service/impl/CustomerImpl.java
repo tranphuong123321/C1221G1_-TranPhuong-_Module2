@@ -114,6 +114,7 @@ public class CustomerImpl implements IServiceCustomer {
             String address = scanner.nextLine();
             Customer customer = new Customer(id, name, birthDay, gender, idCard, numberPhone, email, typeOfGuest, address);
             customerList.add(customer);
+            writeCsv();
             break;
         }
     }
@@ -184,6 +185,7 @@ public class CustomerImpl implements IServiceCustomer {
 
 
                 }
+                writeCsv();
             }
         }
     }

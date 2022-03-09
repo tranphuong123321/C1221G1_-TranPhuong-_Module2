@@ -143,9 +143,6 @@ public class EmployeeImpl implements IServiceEmployee {
             employeeList.add(employee);
             writeCsv();
             break;
-
-
-
         }
     }
 
@@ -170,62 +167,57 @@ public class EmployeeImpl implements IServiceEmployee {
                 System.out.println("7. sua trinh do");
                 System.out.println("8. sua vi tri");
                 System.out.println("9. sua luong");
-                int choice=Integer.parseInt(scanner.nextLine());
-                switch (choice){
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
                     case 1:
                         System.out.println("sua ten");
-                        String fixName=scanner.nextLine();
+                        String fixName = scanner.nextLine();
                         employee.setName(fixName);
                         break;
                     case 2:
                         System.out.println("sua ngay sinh");
-                        int fixBirthDay=Integer.parseInt(scanner.nextLine());
+                        int fixBirthDay = Integer.parseInt(scanner.nextLine());
                         employee.setBirthDay(fixBirthDay);
                         break;
                     case 3:
                         System.out.println("sua gioi tinh");
-                        String fixGenDer=scanner.nextLine();
+                        String fixGenDer = scanner.nextLine();
                         employee.setGender(fixGenDer);
                         break;
                     case 4:
                         System.out.println("sua CMND");
-                        int fixIdCard=Integer.parseInt(scanner.nextLine());
+                        int fixIdCard = Integer.parseInt(scanner.nextLine());
                         employee.setIdCard(fixIdCard);
                         break;
                     case 5:
                         System.out.println("sua so dien thoai");
-                        int fixNumberPhone=Integer.parseInt(scanner.nextLine());
+                        int fixNumberPhone = Integer.parseInt(scanner.nextLine());
                         employee.setNumberPhone(fixNumberPhone);
                         break;
                     case 6:
                         System.out.println("sua mail");
-                        String fixMail=scanner.nextLine();
+                        String fixMail = scanner.nextLine();
                         employee.setEmail(fixMail);
                         break;
                     case 7:
                         System.out.println("sua trinh do");
-                        String fixLevel=scanner.nextLine();
+                        String fixLevel = scanner.nextLine();
                         employee.setLevel(fixLevel);
                         break;
                     case 8:
                         System.out.println("sua vi tri");
-                        String fixPosition=scanner.nextLine();
+                        String fixPosition = scanner.nextLine();
                         employee.setPosition(fixPosition);
                         break;
                     case 9:
                         System.out.println("sua luong");
-                        int fixSalary=Integer.parseInt(scanner.nextLine());
+                        int fixSalary = Integer.parseInt(scanner.nextLine());
                         employee.setSalary(fixSalary);
                         break;
-
-
                 }
-
-
-
+                writeCsv();
             }
         }
-
     }
 
     @Override

@@ -1,12 +1,12 @@
 package case_study.service.impl;
 
 import case_study.models.Booking;
-import case_study.models.Villa;
-import case_study.service.IServiceBooking;
+import case_study.models.BookingVilla;
+import case_study.service.IServiceBookingVilla;
 
 import java.util.Scanner;
 
-public class BookingImpl implements IServiceBooking {
+public class BookingVillaImpl implements IServiceBookingVilla {
     @Override
     public void bookVilla() {
         Scanner scanner = new Scanner(System.in);
@@ -22,22 +22,17 @@ public class BookingImpl implements IServiceBooking {
         String serviceName = scanner.nextLine();
         System.out.println("hay nhap ten dich vu");
         String typeOfService = scanner.nextLine();
-        Booking booking=new Booking();
+        BookingVilla bookingVilla=new BookingVilla(idBooking,  startDay,  endDay, idCustomer, serviceName,  typeOfService);
+
 
     }
 
-    @Override
-    public void bookHouse() {
 
-    }
 
-    @Override
-    public void bookRoom() {
 
-    }
 
     @Override
-    public void displayBooking() {
+    public void displayBookingVilla() {
 
     }
 }

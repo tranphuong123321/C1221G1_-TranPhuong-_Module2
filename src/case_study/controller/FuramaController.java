@@ -125,7 +125,7 @@ public class FuramaController {
     }
 
     public void bookingManagerment() {
-        BookingImpl booking=new BookingImpl();
+        BookingVillaImpl booking=new BookingVillaImpl();
         ConstractImpl constract=new ConstractImpl();
         System.out.println("1.\tAdd new booking");
         System.out.println("2.\tDisplay list booking");
