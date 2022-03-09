@@ -1,5 +1,7 @@
 package case_study.service.impl;
 
+import case_study.models.Booking;
+import case_study.models.Villa;
 import case_study.service.IServiceBooking;
 
 import java.util.Scanner;
@@ -20,6 +22,7 @@ public class BookingImpl implements IServiceBooking {
         String serviceName = scanner.nextLine();
         System.out.println("hay nhap ten dich vu");
         String typeOfService = scanner.nextLine();
+        Booking booking=new Booking();
 
     }
 
