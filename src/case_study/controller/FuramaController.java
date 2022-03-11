@@ -146,15 +146,15 @@ public class FuramaController {
                          booking.bookVilla();
                          break;
                      case 2:
-                         booking.bookHouse();
+                     //    booking.bookHouse();
                          break;
                      case 3:
-                         booking.bookRoom();
+                      //   booking.bookRoom();
                          break;
 
                  }
             case 2:
-                booking.displayBooking();
+               // booking.displayBooking();
                 break;
             case 3:
                 constract.creatConstract();

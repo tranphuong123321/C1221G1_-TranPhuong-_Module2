@@ -22,7 +22,7 @@ public class BookingVillaImpl implements IServiceBookingVilla {
         String serviceName = scanner.nextLine();
         System.out.println("hay nhap ten dich vu");
         String typeOfService = scanner.nextLine();
-        BookingVilla bookingVilla=new BookingVilla(idBooking,  startDay,  endDay, idCustomer, serviceName,  typeOfService);
+        //BookingVilla bookingVilla=new BookingVilla(idBooking,  startDay,  endDay, idCustomer, serviceName,  typeOfService);
 
 
     }

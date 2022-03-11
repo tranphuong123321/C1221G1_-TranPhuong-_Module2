@@ -46,27 +46,28 @@ public class ProductImpl implements IService {
                 }
             }
         }
-
     }
 
     @Override
     public void delete() {
         System.out.println("hay nhap id muon xoa");
         int checkId=Integer.parseInt(scanner.nextLine());
-        for(Product product:productList){
-            if(checkId==product.getId()){
+        for (int i=0;i<productList.size();i++) {
+
+
+//        for(Product product:productList){
+            if(checkId==productList.get(i).getId()){
                 System.out.println("ban co chac chan muon xoa");
                 System.out.println("1.co");
                 System.out.println("2.khong");
                 int choice =Integer.parseInt(scanner.nextLine());
                 if((choice==1 )){
-                    productList.remove(checkId);
+                    productList.remove(productList.get(i));
                 }else if(choice==2){
                     showList();
                 }else System.out.println("sai dinh dang, moi nhap lai");
             }
         }
-
     }
 
     @Override
@@ -84,6 +85,4 @@ public class ProductImpl implements IService {
             }
         }
     }
-
-
 }
