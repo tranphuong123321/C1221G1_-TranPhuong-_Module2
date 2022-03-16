@@ -1,72 +1,84 @@
 package case_study.models;
 
 public abstract class Facility {
-    // Tên dịch vụ, Diện tích sử dụng, Chi phí thuê, Số lượng người tối đa, Kiểu thuê (bao gồm thuê theo năm, tháng, ngày, giờ
-    private String serviceName;
-    private int usableArea;
-    private int rentalCosts;
-    private int maximumNumberOfPeople;
-    private String rentalType;
+    private String idFacility;
+    private String nameService;
+    private double areaUse;
+    private int rentalPrice;
+    private int rentalPeopleMax;
+    private String styleRental;
 
     public Facility() {
     }
 
-    public Facility(String serviceName, int usableArea, int rentalCosts, int maximumNumberOfPeople, String rentalType) {
-        this.serviceName = serviceName;
-        this.usableArea = usableArea;
-        this.rentalCosts = rentalCosts;
-        this.maximumNumberOfPeople = maximumNumberOfPeople;
-        this.rentalType = rentalType;
+    public Facility(String idFacility, String nameService, double areaUse, int rentalPrice, int rentalPeopleMax, String styleRental) {
+        this.idFacility = idFacility;
+        this.nameService = nameService;
+        this.areaUse = areaUse;
+        this.rentalPrice = rentalPrice;
+        this.rentalPeopleMax = rentalPeopleMax;
+        this.styleRental = styleRental;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getIdFacility() {
+        return idFacility;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setIdFacility(String idFacility) {
+        this.idFacility = idFacility;
     }
 
-    public int getUsableArea() {
-        return usableArea;
+    public String getNameService() {
+        return nameService;
     }
 
-    public void setUsableArea(int usableArea) {
-        this.usableArea = usableArea;
+    public void setNameService(String nameService) {
+        this.nameService = nameService;
     }
 
-    public int getRentalCosts() {
-        return rentalCosts;
+    public double getAreaUse() {
+        return areaUse;
     }
 
-    public void setRentalCosts(int rentalCosts) {
-        this.rentalCosts = rentalCosts;
+    public void setAreaUse(double areaUse) {
+        this.areaUse = areaUse;
     }
 
-    public int getMaximumNumberOfPeople() {
-        return maximumNumberOfPeople;
+    public int getRentalPrice() {
+        return rentalPrice;
     }
 
-    public void setMaximumNumberOfPeople(int maximumNumberOfPeople) {
-        this.maximumNumberOfPeople = maximumNumberOfPeople;
+    public void setRentalPrice(int rentalPrice) {
+        this.rentalPrice = rentalPrice;
     }
 
-    public String getRentalType() {
-        return rentalType;
+    public int getRentalPeopleMax() {
+        return rentalPeopleMax;
     }
 
-    public void setRentalType(String rentalType) {
-        this.rentalType = rentalType;
+    public void setRentalPeopleMax(int rentalPeopleMax) {
+        this.rentalPeopleMax = rentalPeopleMax;
+    }
+
+    public String getStyleRental() {
+        return styleRental;
+    }
+
+    public void setStyleRental(String styleRental) {
+        this.styleRental = styleRental;
     }
 
     @Override
     public String toString() {
-        return "Facility{" +
-                "serviceName='" + serviceName + '\'' +
-                ", usableArea=" + usableArea +
-                ", rentalCosts=" + rentalCosts +
-                ", maximumNumberOfPeople=" + maximumNumberOfPeople +
-                ", rentalType='" + rentalType + '\'' +
+        return
+                "idFacility='" + idFacility + '\'' +
+                ", nameService='" + nameService + '\'' +
+                ", areaUse=" + areaUse +
+                ", rentalPrice=" + rentalPrice +
+                ", rentalPeopleMax=" + rentalPeopleMax +
+                ", styleRental='" + styleRental + '\'' +
                 '}';
     }
 }
+
+

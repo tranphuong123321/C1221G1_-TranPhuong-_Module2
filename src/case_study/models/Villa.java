@@ -1,62 +1,60 @@
 package case_study.models;
 
 public class Villa extends Facility{
-    //Tiêu chuẩn phòng, Diện tích hồ bơi, Số tầng.
-    private String roomStandard;
-    private  int poolArea;
-    private int numberOfFloors;
+    private String standardVilla;
+    private double arePool;
+    private int floor;
 
     public Villa() {
     }
 
-    public Villa(String roomStandard, int poolArea, int numberOfFloors) {
-        this.roomStandard = roomStandard;
-        this.poolArea = poolArea;
-        this.numberOfFloors = numberOfFloors;
+
+    public Villa(String idFacility,
+                 String nameService,
+                 double areaUse,
+                 int rentalPrice,
+                 int rentalPeopleMax,
+                 String styleRental,
+                 String standardVilla,
+                 double arePool,
+                 int floor) {
+        super(idFacility, nameService, areaUse, rentalPrice, rentalPeopleMax, styleRental);
+        this.standardVilla = standardVilla;
+        this.arePool = arePool;
+        this.floor = floor;
+
     }
 
-    public Villa(String serviceName, int usableArea, int rentalCosts, int maximumNumberOfPeople, String rentalType, String roomStandard, int poolArea, int numberOfFloors) {
-        super(serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType);
-        this.roomStandard = roomStandard;
-        this.poolArea = poolArea;
-        this.numberOfFloors = numberOfFloors;
+    public String getStandardVilla() {
+        return standardVilla;
     }
 
-    public String getRoomStandard() {
-        return roomStandard;
+    public void setStandardVilla(String standardVilla) {
+        this.standardVilla = standardVilla;
     }
 
-    public void setRoomStandard(String roomStandard) {
-        this.roomStandard = roomStandard;
+    public double getArePool() {
+        return arePool;
     }
 
-    public int getPoolArea() {
-        return poolArea;
+    public void setArePool(double arePool) {
+        this.arePool = arePool;
     }
 
-    public void setPoolArea(int poolArea) {
-        this.poolArea = poolArea;
+    public int getFloor() {
+        return floor;
     }
 
-    public int getNumberOfFloors() {
-        return numberOfFloors;
-    }
-
-    public void setNumberOfFloors(int numberOfFloors) {
-        this.numberOfFloors = numberOfFloors;
+    public void setFloor(int floor) {
+        this.floor = floor;
     }
 
     @Override
     public String toString() {
-        return "Villa{" +
-                "serviceName='" + getServiceName() + '\'' +
-                ", usableArea=" + getUsableArea() +
-                ", rentalCosts=" + getRentalCosts() +
-                ", maximumNumberOfPeople=" + getMaximumNumberOfPeople() +
-                ", rentalType='" + getRentalType() + '\'' +
-                ", roomStandard='" + roomStandard + '\'' +
-                ", poolArea=" + poolArea +
-                ", numberOfFloors=" + numberOfFloors +
+        return "Villa{" + super.toString() +
+                "standardVilla='" + standardVilla + '\'' +
+                ", arePool=" + arePool +
+                ", floor=" + floor +
                 '}';
     }
 }

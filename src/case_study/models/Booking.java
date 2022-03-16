@@ -1,83 +1,72 @@
 package case_study.models;
 
-public class Booking {
-    //: mã booking, ngày bắt đầu, ngày kết thúc, mã khách hàng, tên dịch vụ, loại dịch vụ.
-    private int idBooking;
-    private String startDay;
-    private String endDay;
-    private  int idCustomer;
-    private  String serviceName;
-    private String typeOfService;
+public class Booking extends Facility {
+    private Integer idBooking;
+    private String startDate;
+    private String enDate;
+    private Customer customer;
+    private Facility facility;
 
     public Booking() {
+
     }
 
-    public Booking(int idBooking, String startDay, String endDay, int idCustomer, String serviceName, String typeOfService) {
+    public Booking(Integer idBooking, String startDate, String enDate, Customer customer, Facility facility) {
         this.idBooking = idBooking;
-        this.startDay = startDay;
-        this.endDay = endDay;
-        this.idCustomer = idCustomer;
-        this.serviceName = serviceName;
-        this.typeOfService = typeOfService;
+        this.startDate = startDate;
+        this.enDate = enDate;
+        this.customer = customer;
+        this.facility = facility;
     }
 
-    public int getIdBooking() {
+    public Integer getIdBooking() {
         return idBooking;
     }
 
-    public void setIdBooking(int idBooking) {
+    public void setIdBooking(Integer idBooking) {
         this.idBooking = idBooking;
     }
 
-    public String getStartDay() {
-        return startDay;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStartDay(String startDay) {
-        this.startDay = startDay;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEndDay() {
-        return endDay;
+    public String getEnDate() {
+        return enDate;
     }
 
-    public void setEndDay(String endDay) {
-        this.endDay = endDay;
+    public void setEnDate(String enDate) {
+        this.enDate = enDate;
     }
 
-    public int getIdCustomer() {
-        return idCustomer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getTypeOfService() {
-        return typeOfService;
-    }
-
-    public void setTypeOfService(String typeOfService) {
-        this.typeOfService = typeOfService;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 
     @Override
     public String toString() {
-        return "Booking{" +
+        return "Booking{" + super.toString() +
                 "idBooking=" + idBooking +
-                ", startDay='" + startDay + '\'' +
-                ", endDay='" + endDay + '\'' +
-                ", idCustomer=" + idCustomer +
-                ", serviceName='" + serviceName + '\'' +
-                ", typeOfService='" + typeOfService + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", enDate='" + enDate + '\'' +
+                ", customer=" + customer +
+                ", facility=" + facility +
                 '}';
     }
 }

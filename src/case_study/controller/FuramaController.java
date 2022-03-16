@@ -5,183 +5,277 @@ import case_study.service.impl.*;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static void main(String[] args) {
-        FuramaController furamaController = new FuramaController();
-        furamaController.displayMainMenu();
+    static boolean check;
+    static int choice = 0;
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {         //Hiển thị displayMainMenu()
+        displayMainMenu();
     }
 
-    public void displayMainMenu() {
-        boolean check = true;
-        while (check) {
-            System.out.println("1.\tEmployee Management");
-            System.out.println("2.\tCustomer Management");
-            System.out.println("3.\tFacility Management");
-            System.out.println("4.\tBooking Management");
-            System.out.println("5.\tPromotion Management");
+    public static void displayMainMenu() {
+        do {
+            check = false;
+            System.out.println("----DisplayMainMenu----");
+            System.out.println("1.\tEmployee Management");     //Hiển thị thông tin nhân viên Furama
+            System.out.println("2.\tCustomer Management");     //Hiển thị thông tin khách hàng Furama
+            System.out.println("3.\tFacility Management");     //Hiển thị các dịch vụ của Furama
+            System.out.println("4.\tBooking Managerment");     //Hiển thị danh sách mà khách đã booking của Furama
+            System.out.println("5.\tPromotion Management");    //Hiển thị chương trình khuyến mãi của Furama
             System.out.println("6.\tExit");
-            Scanner scanner = new Scanner(System.in);
-            int choice = Integer.parseInt(scanner.nextLine());
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+                check = true;
+                continue;
+            }
             switch (choice) {
                 case 1:
-                    employeeManagement();
+                    displayEmployeeMenu();
                     break;
                 case 2:
-                    customerManagement();
+                    displayCustomerMenu();
                     break;
                 case 3:
-                    facilityManagement();
+                    displayFacilityMenu();
                     break;
                 case 4:
-                    bookingManagerment();
+                    displayBookingMenu();
+                    break;
+                case 5:
+                    displayPromotionMenu();
+                    break;
+                case 6:
+                    System.exit(0);
+                default:
+                    check = true;
                     break;
             }
-        }
+        } while (check);
     }
 
-    public void employeeManagement() {
-        EmployeeImpl employee = new EmployeeImpl();
-        System.out.println("1\tDisplay list employees");
-        System.out.println("2\tAdd new employee");
-        System.out.println("3\tEdit employee");
-        System.out.println("4\tReturn main menu");
-        Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                employee.disPlay();
-                break;
-            case 2:
-                employee.addNew();
-                break;
-            case 3:
-                employee.edit();
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+    //Case 1:
+    public static void displayEmployeeMenu() {
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+        do {
+            check = false;
+            System.out.println("----DisplayMainMenuEmployee----");
+            System.out.println("1.\tDisplay list employees");
+            System.out.println("2.\tAdd new employee");
+            System.out.println("3.\tEdit employee");
+            System.out.println("4.\tReturn main menu");
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+                check = true;
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    employeeService.display();
+                    displayEmployeeMenu();
+                    break;
+                case 2:
+                    employeeService.addNew();
+                    displayEmployeeMenu();
+                    break;
+                case 3:
+                    employeeService.edit();
+                    displayEmployeeMenu();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    check = true;
+                    break;
+            }
+        } while (check);
     }
 
-    public void customerManagement() {
-        CustomerImpl customer = new CustomerImpl();
-        System.out.println("1\tDisplay list customers");
-        System.out.println("2\tAdd new customer");
-        System.out.println("3\tEdit customer");
-        System.out.println("4\tReturn main menu");
-        Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                customer.disPlay();
-                break;
-            case 2:
-                customer.addNew();
-                break;
-            case 3:
-                customer.edit();
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+
+    //Case 2:
+    public static void displayCustomerMenu() {
+        CustomerServiceImpl customerService = new CustomerServiceImpl();
+        do {
+            check = false;
+            System.out.println("----DisplayMainMenuCustomer----");
+            System.out.println("1.\tDisplay list customers");
+            System.out.println("2.\tAdd new customer");
+            System.out.println("3.\tEdit customer");
+            System.out.println("4.\tReturn main menu");
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+                check = false;
+                continue;
+            }
+            switch (choice) {
+                case 1:
+                    customerService.display();
+                    displayCustomerMenu();
+                    break;
+                case 2:
+                    customerService.addNew();
+                    displayCustomerMenu();
+                    break;
+                case 3:
+                    customerService.edit();
+                    displayCustomerMenu();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    check = true;
+                    break;
+            }
+        } while (check);
     }
 
-    public void facilityManagement() {
-        FacilityImpl facility=new FacilityImpl();
-        System.out.println("1\tDisplay list facility");
-        System.out.println("2\tAdd new facility");
-        System.out.println("3\tDisplay list facility maintenance");
-        System.out.println("4\tReturn main menu");
-        Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                facility.displayListFacility();
-                break;
-            case 2:
-                System.out.println("1.Add Villa");
-                System.out.println("2.Add House");
-                System.out.println("3.Add Room");
-                choice=Integer.parseInt(scanner.nextLine());
-                switch (choice){
-                    case 1:
-                        facility.addVilla();
-                        break;
-                    case 2:
-                        facility.addHouse();
-                        break;
-                    case 3:
-                        facility.addRoom();
-                        break;
 
-                }
-            case 3:
-                facility.displayListMaintenance();
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-        }
+    //Case 3:
+    public static void displayFacilityMenu() {
+        FacilityServiceIpml facilityServiceIpml = new FacilityServiceIpml();
+        do {
+            check = false;
+            System.out.println("----DisplayMainMenuFacility----");
+            System.out.println("1.\tDisplay list facility");
+            System.out.println("2.\tAdd new facility");
+            System.out.println("3.\tDisplay list facility maintenancer");
+            System.out.println("4.\tReturn main menu");
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+            switch (choice) {
+                case 1:
+                    facilityServiceIpml.display();
+                    displayFacilityMenu();
+                    break;
+                case 2:
+                    do {
+                        check = false;
+                        System.out.println("----DisplayAddFacility----");
+                        System.out.println("1.\tAdd new Villa");
+                        System.out.println("2.\tAdd new House");
+                        System.out.println("3.\tAdd new Room");
+                        System.out.println("4.\tBack to menu");
+                        try {
+                            choice = Integer.parseInt(scanner.nextLine());
+                        } catch (NumberFormatException e) {
+                            System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+                        }
+                        switch (choice) {
+                            case 1:
+                                facilityServiceIpml.addNewVilla();
+                                displayFacilityMenu();
+                                break;
+                            case 2:
+                                facilityServiceIpml.addNewHouse();
+                                displayFacilityMenu();
+                                break;
+                            case 3:
+                                facilityServiceIpml.addNewRoom();
+                                displayFacilityMenu();
+                                break;
+                            case 4:
+                                displayFacilityMenu();
+                                break;
+                        }
+
+                    } while (check);
+                    break;
+                case 3:
+                    facilityServiceIpml.displayMaintain();
+                    displayEmployeeMenu();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+            }
+        } while (check);
     }
 
-    public void bookingManagerment() {
-        BookingVillaImpl booking=new BookingVillaImpl();
-        ConstractImpl constract=new ConstractImpl();
-        System.out.println("1.\tAdd new booking");
-        System.out.println("2.\tDisplay list booking");
-        System.out.println("3.\tCreate new constracts");
-        System.out.println("4.\tDisplay list contracts");
-        System.out.println("5.\tEdit contracts");
-        System.out.println("6.\tReturn main menu");
-        Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                System.out.println("1.Book Villa");
-                System.out.println("2.Book House");
-                System.out.println("3.Book Room");
-                 choice= Integer.parseInt(scanner.nextLine());
-                 switch (choice){
-                     case 1:
-                         booking.bookVilla();
-                         break;
-                     case 2:
-                     //    booking.bookHouse();
-                         break;
-                     case 3:
-                      //   booking.bookRoom();
-                         break;
 
-                 }
-            case 2:
-               // booking.displayBooking();
-                break;
-            case 3:
-                constract.creatConstract();
-                break;
-            case 4:
-                constract.displayConstract();
-                break;
-            case 5:
-                constract.editConstract();
-                break;
-            case 6:
-                displayMainMenu();
-                break;
+    public static void displayBookingMenu() {
+        BookingServiceImpl bookingService = new BookingServiceImpl();
+        ContractServiceImpl contractService = new ContractServiceImpl();
+        do {
+            check = false;
+            System.out.println("----DisplayMainMenuBooking");
+            System.out.println("1.\tAdd new booking");
+            System.out.println("2.\tDisplay list booking");
+            System.out.println("3.\tCreate new constracts");
+            System.out.println("4.\tDisplay list contracts");
+            System.out.println("5.\tEdit contracts");
+            System.out.println("6.\tReturn main menu");
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
 
-
-        }
+            switch (choice) {
+                case 1:
+                    bookingService.addBooking();
+                    displayBookingMenu();
+                    break;
+                case 2:
+                    bookingService.displayListBooking();
+                    displayBookingMenu();
+                    break;
+                case 3:
+                    contractService.createNewContract();
+                    displayBookingMenu();
+                    break;
+                case 4:
+                    contractService.displayListContract();
+                    displayBookingMenu();
+                    break;
+                case 5:
+                    displayBookingMenu();
+                    break;
+                case 6:
+                    displayMainMenu();
+                    break;
+            }
+        } while (check);
     }
 
-    public void promotionManagement() {
-        System.out.println("1.\tDisplay list customers use service");
-        System.out.println("2.\tDisplay list customers get voucher");
-        System.out.println("3.\tReturn main menu");
-        Scanner scanner = new Scanner(System.in);
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
+    //Case 5:
+    public static void displayPromotionMenu() {
+        do {
+            try {
+                System.out.println("---Display List Service and Voucher---");
+                System.out.println("1.\tDisplay list customers use service");
+                System.out.println("2.\tDisplay list customers get voucher");
+                System.out.println("3.\tReturn main menu");
+                Scanner scanner = new Scanner(System.in);
 
-        }
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dạng, vui lòng nhập lại.");
+            }
+            switch (choice) {
+                case 1:
+                    displayPromotionMenu();
+                    break;
+                case 2:
+                    displayPromotionMenu();
+                    break;
+                case 3:
+                    displayMainMenu();
+                    break;
+            }
+        } while (check);
     }
 }

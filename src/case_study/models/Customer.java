@@ -1,29 +1,32 @@
 package case_study.models;
 
 public class Customer extends Person {
-    private String typeOfGuest;
+    private String typeCustomer;
     private String address;
 
     public Customer() {
     }
 
-    public Customer(String typeOfGuest, String address) {
-        this.typeOfGuest = typeOfGuest;
+    public Customer(String id,
+                    String name,
+                    String age,
+                    String sex,
+                    String idCard,
+                    String numBerPhone,
+                    String email,
+                    String typeCustomer,
+                    String address) {
+        super(id, name, age, sex, idCard, numBerPhone, email);
+        this.typeCustomer = typeCustomer;
         this.address = address;
     }
 
-    public Customer(int id, String name, int birthDay, String gender, int idCard, int numberPhone, String email, String typeOfGuest, String address) {
-        super(id, name, birthDay, gender, idCard, numberPhone, email);
-        this.typeOfGuest = typeOfGuest;
-        this.address = address;
+    public String getTypeCustomer() {
+        return typeCustomer;
     }
 
-    public String getTypeOfGuest() {
-        return typeOfGuest;
-    }
-
-    public void setTypeOfGuest(String typeOfGuest) {
-        this.typeOfGuest = typeOfGuest;
+    public void setTypeCustomer(String typeCustomer) {
+        this.typeCustomer = typeCustomer;
     }
 
     public String getAddress() {
@@ -36,15 +39,8 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "id=" + getId() +
-                ", name='" + getName() + '\'' +
-                ", birthDay='" + getBirthDay() + '\'' +
-                ", gender='" + getGender() + '\'' +
-                ", idCard=" + getIdCard() +
-                ", numberPhone=" + getNumberPhone() +
-                ", email='" + getEmail() + '\'' +
-                ", typeOfGuest='" + typeOfGuest + '\'' +
+        return "customer{" + super.toString() +
+                ", typeCustomer='" + typeCustomer + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }

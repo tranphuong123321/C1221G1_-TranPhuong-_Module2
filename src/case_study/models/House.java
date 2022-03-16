@@ -1,20 +1,21 @@
 package case_study.models;
 
 public class House extends Facility{
-    //Tiêu chuẩn phòng, Số tầng.
-    private String roomStandard;
-    private int numberOfFloors;
+    public String roomStandard; // tieu chuan phong
+    public int numberOfFloors; // so tang
 
     public House() {
     }
 
-    public House(String roomStandard, int numberOfFloors) {
-        this.roomStandard = roomStandard;
-        this.numberOfFloors = numberOfFloors;
-    }
-
-    public House(String serviceName, int usableArea, int rentalCosts, int maximumNumberOfPeople, String rentalType, String roomStandard, int numberOfFloors) {
-        super(serviceName, usableArea, rentalCosts, maximumNumberOfPeople, rentalType);
+    public House(String idFacility,
+                 String nameService,
+                 double areaUse,
+                 int rentalPrice,
+                 int rentalPeopleMax,
+                 String styleRental,
+                 String roomStandard,
+                 int numberOfFloors) {
+        super(idFacility, nameService, areaUse, rentalPrice, rentalPeopleMax, styleRental);
         this.roomStandard = roomStandard;
         this.numberOfFloors = numberOfFloors;
     }
@@ -37,13 +38,8 @@ public class House extends Facility{
 
     @Override
     public String toString() {
-        return "House{" +
-                ", serviceName='" + getServiceName() + '\'' +
-                ", usableArea=" + getUsableArea() +
-                ", rentalCosts=" + getRentalType() +
-                ", maximumNumberOfPeople=" + getMaximumNumberOfPeople() +
-                ", rentalType='" + getRentalType() + '\'' +
-                ", roomStandard='" + roomStandard + '\'' +
+        return "House{" + super.toString() +
+                "roomStandard='" + roomStandard + '\'' +
                 ", numberOfFloors=" + numberOfFloors +
                 '}';
     }
