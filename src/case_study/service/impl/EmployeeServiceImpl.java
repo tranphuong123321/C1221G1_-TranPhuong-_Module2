@@ -2,6 +2,7 @@ package case_study.service.impl;
 
 
 import case_study.models.Employee;
+import case_study.models.Person;
 import case_study.service.EmployeeService;
 import case_study.until.RegexData;
 
@@ -93,7 +94,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         String level = "";
         String position = "";
 
-        String id = "NV-" +randomId()+randomId();
+        //String id = "NV-" +randomId()+randomId();
+        System.out.println("Nhap id");
+        String id= scanner.nextLine();
 
         System.out.println("Nhập tên: ");
         String name = scanner.nextLine();
@@ -243,46 +246,127 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void edit() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập tên nhân viên mà bạn muốn sữa đổi thông tin: ");
-        String name = scanner.nextLine();
-        List<Employee> editList = new ArrayList<>();
-        for (Employee employee : employeeList) {
-            if (employee.getName().contains(name)) {
-                editList.add(employee);
-            }
-        }
-        if (editList.size() < 1) {
-            System.out.println("Không có người bạn muốn tìm.");
-        } else if (editList.size() == 1) {
-            Employee employee = editList.get(0);
-            for (Employee employee1 : employeeList) {
-                if (employee1.getId().equals(employee.getId())) {
-                    String oldID = employee1.getId();
-                    String numID = oldID.substring(2);
-                    String position = scanner.nextLine();
-                    String newID = position + numID;
-                    employee1.setId(newID);
-                    employee1.setName(scanner.nextLine());
-                    employee1.setAge(scanner.nextLine());
-                    employee1.setSex(scanner.nextLine());
-                    employee1.setIdCard(scanner.nextLine());
-                    employee1.setNumBerPhone(scanner.nextLine());
-                    employee1.setEmail(scanner.nextLine());
-                    employee1.setLevel(scanner.nextLine());
-                    employee1.setPosition(scanner.nextLine());
-                    employee1.setSalary(scanner.nextLine());
-                }
-            }
-            write();
-        }
-    }
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Nhập tên nhân viên mà bạn muốn sữa đổi thông tin: ");
+//        String name = scanner.nextLine();
+//        List<Employee> editList = new ArrayList<>();
+//        for (Employee employee : employeeList) {
+//            if (employee.getName().contains(name)) {
+//                editList.add(employee);
+//            }
+//        }
+//        if (editList.size() < 1) {
+//            System.out.println("Không có người bạn muốn tìm.");
+//        } else if (editList.size() == 1) {
+//            Employee employee = editList.get(0);
+//            for (Employee employee1 : employeeList) {
+//                if (employee1.getId().equals(employee.getId())) {
+//                    String oldID = employee1.getId();
+//                    String numID = oldID.substring(2);
+//                    String position = scanner.nextLine();
+//                    String newID = position + numID;
+//                    employee1.setId(newID);
+//                    employee1.setName(scanner.nextLine());
+//                    employee1.setAge(scanner.nextLine());
+//                    employee1.setSex(scanner.nextLine());
+//                    employee1.setIdCard(scanner.nextLine());
+//                    employee1.setNumBerPhone(scanner.nextLine());
+//                    employee1.setEmail(scanner.nextLine());
+//                    employee1.setLevel(scanner.nextLine());
+//                    employee1.setPosition(scanner.nextLine());
+//                    employee1.setSalary(scanner.nextLine());
+//                }
+//            }
+//            write();
+//        }
+//    }
+//
+//    int randomId(){
+//        int random;
+//        Random rd = new Random();
+//        random = rd.nextInt(10);
+//        return random;
+//    }
+        System.out.println("Input your id");
+        String  fixId = scanner.nextLine();
+        boolean check = false;
+        for (Person employee : employeeList) {
+            System.out.println(employee.getId());
+            if (employee.getId().equals(fixId)) {
+                check = true;
+                System.out.println("Ban muon sua cai gi");
+                System.out.println("2. name");
+                System.out.println("3. dateOfBirth");
+                System.out.println("4. sex");
+                System.out.println("5. idCard");
+                System.out.println("6. numberPhone");
+                System.out.println("7. email");
+                System.out.println("8. trinh do");
+                System.out.println("9. vi tri");
+                System.out.println("10. luong");
+                int choice = scanner.nextInt();
+                scanner.skip("\\R");
+                switch (choice) {
+                    case 2: {
+                        System.out.println("sua ten");
+                        String fixName = scanner.nextLine();
+                        employee.setName(fixName);
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("sua ngay sinh");
+                        String fixDateOfBirth = scanner.nextLine();
+                        employee.setAge(fixDateOfBirth);
+                        break;
+                    }
+                    case 4: {
+                        System.out.println("sua gioi tinh");
+                        String fixSex = scanner.nextLine();
+                        employee.setSex(fixSex);
+                        break;
+                    }
+                    case 5: {
+                        System.out.println("sua cmnd");
+                        String fixIdcard = scanner.nextLine();
+                        employee.setIdCard(fixIdcard);
+                        break;
+                    }
+                    case 6: {
+                        System.out.println("sua sdt");
+                        String fixNumberPhone = scanner.nextLine();
+                        employee.setNumBerPhone(fixNumberPhone);
+                        break;
+                    }
+                    case 7: {
+                        System.out.println("sua email");
+                        String fixMail = scanner.nextLine();
+                        employee.setEmail(fixMail);
+                        break;
+                    }
+                    case 8: {
+                        System.out.println("sua trinh do");
+                        String fixLevel = scanner.nextLine();
+                        ((Employee) employee).setLevel(fixLevel);
+                        break;
+                    }
+                    case 9: {
+                        System.out.println("sua vi tri");
+                        String fixPosition = scanner.nextLine();
+                        ((Employee) employee).setPosition(fixPosition);
+                        break;
+                    }
+                    case 10: {
+                        System.out.println("sua luong");
+                        String fixSalary = scanner.nextLine();
+                        ((Employee) employee).setSalary(fixSalary);
+                        break;
+                    }
 
-    int randomId(){
-        int random;
-        Random rd = new Random();
-        random = rd.nextInt(10);
-        return random;
+                }
+            } else if (!check) {
+                System.out.println("ID not found!");
+            }
+        }
     }
 }
 

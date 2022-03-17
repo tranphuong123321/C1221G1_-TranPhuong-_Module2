@@ -86,7 +86,9 @@ public class CustomerServiceImpl implements CustomerService {
         String sex = "";
         String typeCustomer = "";
 
-        String id = "KH-" + randomId() + randomId();
+      //  String id = "KH-" + randomId() + randomId();
+        System.out.println("Nhap id");
+        String id= scanner.nextLine();
 
         System.out.println("Nhập tên: ");
         String name = scanner.nextLine();
@@ -133,7 +135,7 @@ public class CustomerServiceImpl implements CustomerService {
         String email = inputEYEmail();
 
         do {
-            check = true;
+            check = false;
             System.out.println("Loại khách hàng.");
             System.out.println("1. Diamond.");
             System.out.println("2. Platinium.");
@@ -201,14 +203,99 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void edit() {
+//        System.out.println("Input your id");
+//        String fixid = scanner.nextLine();
+//        boolean check = false;
+//        for (Person customer : customerList) {
+//            System.out.println(customer.getId());
+//            if (customer.getId().equals(fixid)) {
+//                check = true;
+//                System.out.println("DANH SÁCH SỬA THÔNG TIN");
+//                System.out.println("2. name");
+//                System.out.println("3. dateOfBirth");
+//                System.out.println("4. sex");
+//                System.out.println("5. idCard");
+//                System.out.println("6. numberPhone");
+//                System.out.println("7. email");
+//                System.out.println("8. type");
+//                System.out.println("9. address");
+//                int choice = scanner.nextInt();
+//                scanner.skip("\\R");
+//                try {
+//                    choice = Integer.parseInt(scanner.nextLine());
+//                } catch (NumberFormatException e) {
+//                    System.out.println("Bạn đã nhập sai vui lòng nhập lại");
+//                }
+//                switch (choice) {
+//                    case 2:
+//                        System.out.println("Sửa tên: ");
+//                        String fixName = scanner.nextLine();
+//                        customer.setName(fixName);
+//                        break;
+//
+//                    case 3:
+//                        System.out.println("sua ngay sinh");
+//                        String fixAge = scanner.nextLine();
+//                        customer.setAge(fixAge);
+//                        break;
+//
+//                    case 4:
+//                        System.out.println("sua gioi tinh");
+//                        String fixSex = scanner.nextLine();
+//                        customer.setSex(fixSex);
+//                        break;
+//
+//                    case 5:
+//                        System.out.println("sua cmnd");
+//                        String fixIdcard = scanner.nextLine();
+//                        customer.setIdCard(fixIdcard);
+//                        break;
+//
+//                    case 6:
+//                        System.out.println("sua sdt");
+//                        String fixNumberPhone = scanner.nextLine();
+//                        customer.setNumBerPhone(fixNumberPhone);
+//                        break;
+//
+//                    case 7:
+//                        System.out.println("Sữa Email: ");
+//                        String fixEmail = scanner.nextLine();
+//                        customer.setEmail(fixEmail);
+//                        break;
+//
+//                    case 8:
+//                        System.out.println("Sửa loại khách hàng: ");
+//                        String fixType = scanner.nextLine();
+//                        ((Customer) customer).setTypeCustomer(fixType);
+//                        break;
+//
+//                    case 9:
+//                        System.out.println("Địa chỉ: ");
+//                        String fixAddress = scanner.nextLine();
+//                        ((Customer) customer).setAddress(fixAddress);
+//                        break;
+//                }
+//            } else if (!check) {
+//                System.out.println("ID not found!");
+//            }
+//        }
+//        write();
+//    }
+//
+//    int randomId() {
+//        int random;
+//        Random rd = new Random();
+//        random = rd.nextInt(10);
+//        return random;
+//    }
         System.out.println("Input your id");
-        String fixid = scanner.nextLine();
+        String  fixId = scanner.nextLine();
         boolean check = false;
         for (Person customer : customerList) {
             System.out.println(customer.getId());
-            if (customer.getId().equals(fixid)) {
+            if (customer.getId().equals(fixId)) {
                 check = true;
-                System.out.println("DANH SÁCH SỬA THÔNG TIN");
+                System.out.println("Ban muon sua cai gi");
                 System.out.println("2. name");
                 System.out.println("3. dateOfBirth");
                 System.out.println("4. sex");
@@ -219,71 +306,60 @@ public class CustomerServiceImpl implements CustomerService {
                 System.out.println("9. address");
                 int choice = scanner.nextInt();
                 scanner.skip("\\R");
-                try {
-                    choice = Integer.parseInt(scanner.nextLine());
-                } catch (NumberFormatException e) {
-                    System.out.println("Bạn đã nhập sai vui lòng nhập lại");
-                }
                 switch (choice) {
-                    case 2:
-                        System.out.println("Sửa tên: ");
+                    case 2: {
+                        System.out.println("sua ten");
                         String fixName = scanner.nextLine();
                         customer.setName(fixName);
                         break;
-
-                    case 3:
+                    }
+                    case 3: {
                         System.out.println("sua ngay sinh");
-                        String fixAge = scanner.nextLine();
-                        customer.setAge(fixAge);
+                        String fixDateOfBirth = scanner.nextLine();
+                        customer.setAge(fixDateOfBirth);
                         break;
-
-                    case 4:
+                    }
+                    case 4: {
                         System.out.println("sua gioi tinh");
                         String fixSex = scanner.nextLine();
                         customer.setSex(fixSex);
                         break;
-
-                    case 5:
+                    }
+                    case 5: {
                         System.out.println("sua cmnd");
-                        String fixIdcard = scanner.nextLine();
+                        String  fixIdcard = scanner.nextLine();
                         customer.setIdCard(fixIdcard);
                         break;
-
-                    case 6:
+                    }
+                    case 6: {
                         System.out.println("sua sdt");
-                        String fixNumberPhone = scanner.nextLine();
+                        String  fixNumberPhone = scanner.nextLine();
                         customer.setNumBerPhone(fixNumberPhone);
                         break;
-
-                    case 7:
-                        System.out.println("Sữa Email: ");
-                        String fixEmail = scanner.nextLine();
-                        customer.setEmail(fixEmail);
+                    }
+                    case 7: {
+                        System.out.println("sua email");
+                        String fixMail = scanner.nextLine();
+                        customer.setEmail(fixMail);
                         break;
-
-                    case 8:
-                        System.out.println("Sửa loại khách hàng: ");
+                    }
+                    case 8: {
+                        System.out.println("sua loai khach hang");
                         String fixType = scanner.nextLine();
                         ((Customer) customer).setTypeCustomer(fixType);
                         break;
-
-                    case 9:
-                        System.out.println("Địa chỉ: ");
+                    }
+                    case 9: {
+                        System.out.println("dia chi");
                         String fixAddress = scanner.nextLine();
                         ((Customer) customer).setAddress(fixAddress);
                         break;
+                    }
                 }
             } else if (!check) {
                 System.out.println("ID not found!");
             }
         }
-        write();
-    }
-
-    int randomId() {
-        int random;
-        Random rd = new Random();
-        random = rd.nextInt(10);
-        return random;
     }
 }
+

@@ -16,9 +16,9 @@ import java.util.Scanner;
 public class FacilityServiceIpml implements FacilityService {
     static Map<Facility, Integer> initMap = new LinkedHashMap<>();
     //Đường dẫn link
-    static final String PATH_VILLA = "D:\\C1021G1-PhamDuyTuan\\Module2\\src\\CaseStudy\\data\\villa.csv";
-    static final String PATH_HOUSE = "D:\\C1021G1-PhamDuyTuan\\Module2\\src\\CaseStudy\\data\\house.csv";
-    static final String PATH_ROOM = "D:\\C1021G1-PhamDuyTuan\\Module2\\src\\CaseStudy\\data\\room.csv";
+    static final String PATH_VILLA = "src/case_study/data/villa";
+    static final String PATH_HOUSE = "src/case_study/data/house";
+    static final String PATH_ROOM = "src/case_study/data/room";
 
     //String Regex
     public static final String REGEX_STR = "[A-Z][a-zA-Z]+";   //Tên dịch vụ, kiểu thuê, tiêu chuẩn

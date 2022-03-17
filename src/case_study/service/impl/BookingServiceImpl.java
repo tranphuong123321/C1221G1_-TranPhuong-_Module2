@@ -16,6 +16,8 @@ public class BookingServiceImpl implements BookingService {
             "[-\\/](19[0-9]{2}|200[012])|29[-\\/]02[-\\/]" +
             "([0-9]{2}(([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468][048]|0[0-9]|1[0-6])00))$";
 
+    private static final String DATE_REGEX = "^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$";
+
     static Set<Booking> bookingSet = new TreeSet<>(new BookingComparator());
 
     static List<Customer> customerList = new ArrayList<>();
@@ -148,16 +150,8 @@ public class BookingServiceImpl implements BookingService {
         Customer customer = chooseCustomer();
         Facility facility = chooseFacility();
 
-        String starDate;
-        do {
-            try {
-                System.out.println("Nhập ngày bất đầu thuê: ");
-                starDate = scanner.nextLine();
-                break;
-            } catch (Exception e) {
-                System.out.println("Bạn đã nhập sai vui lòng nhập lại");
-            }
-        } while (true);
+        System.out.println("Nhập ngày thue phòng: ");
+        String starDate = inToDay();
 
 
         System.out.println("Nhập ngày trả phòng: ");
@@ -172,8 +166,8 @@ public class BookingServiceImpl implements BookingService {
 
     private String inToDay(){
 
-        return RegexData.regexStr(scanner.nextLine(), BIRTHDAY_REGEX,
-                "Bạn đã nhập sai định dạng, giá tiền phải là số dương");
+        return RegexData.regexStr(scanner.nextLine(), DATE_REGEX,
+                "Bạn đã nhập sai định dạng, dd/MM/yyyy");
     }
 
     @Override
