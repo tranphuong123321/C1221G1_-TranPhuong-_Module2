@@ -13,7 +13,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class FacilityServiceImpl implements IFacilityService {
-    public static final String FACILITY_FILE_PATH = "src/data/Facility.csv";
+    public static final String FACILITY_FILE_PATH = "src/case_study/data/Facility.csv";
     public static final String VILLA_FILE_PATH = "src/case_study/data/Villa.csv";
     public static final String HOUSE_FILE_PATH = "src/case_study/data/House.csv";
     public static final String ROOM_FILE_PATH = "src/case_study/data/Room.csv";
@@ -23,7 +23,7 @@ public class FacilityServiceImpl implements IFacilityService {
     public static final String HOUSE_ID_REGEX = "^SVHO-\\d{4}$";
     public static final String ROOM_ID_REGEX = "^SVRO-\\d{4}$";
     public static final String RENTAL_COST_REGEX = "^[1-9]\\d*$";
-    public static final String SERVICE_NAME_REGEX = "^[A-Z][a-z]+\\s\\d+$";
+    public static final String SERVICE_NAME_REGEX = "^[A-Z][a-z]+$";
     public static final String USABLE_AREA_REGEX = "^[0-9]+(\\.\\d+)*$";
     public static final String MAXXIMUN_AREA_REGEX = "^[1-9]+$";
 

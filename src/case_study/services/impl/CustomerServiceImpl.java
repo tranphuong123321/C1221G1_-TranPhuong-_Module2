@@ -22,9 +22,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public final String STRING_REGEX = "^\\p{Lu}\\p{Ll}+( \\p{Lu}\\p{Ll}+)*$";
     public final String DATE_LEAP_YEAR = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
     public final String GENDER_REGEX = "^Male|Female|Unknow$";
-    public final String CMND_REGEX = "^\\d{12}$";
+    public final String CMND_REGEX = "^\\d{9}$";
     public final String VN_PHONE_NUMBER_REGEX = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$";
-    public final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)$";
+    public final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
    // public final String EMAIL_REGEX = "^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
     Scanner sc = new Scanner(System.in);
 
@@ -289,7 +289,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
     private String inputCmnd() {
         System.out.print("Enter cmnd: ");
-        return RegexData.regexStr(sc.nextLine(), CMND_REGEX, "Cmnd must be an 12 digit number");
+        return RegexData.regexStr(sc.nextLine(), CMND_REGEX, "Cmnd must be an 9 digit number");
     }
 
     private String inputPhoneNumber() {
