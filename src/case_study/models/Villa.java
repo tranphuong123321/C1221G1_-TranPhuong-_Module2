@@ -1,60 +1,69 @@
 package case_study.models;
 
-public class Villa extends Facility{
-    private String standardVilla;
-    private double arePool;
-    private int floor;
+public class Villa extends Facility {
+    public enum RoomStandard {
+        DIAMOND("Diamond"),
+        PLATINIUM("Platinium"),
+        GOLD("Gold"),
+        SILVER("Silver");
+        private final String value;
+        RoomStandard(final String value) {
+            this.value = value;
+        }
+        public String getValue() { return value; }
+    }
+    private String roomStandard;
+    private float poolArea;
+    private int numberOfFloors;
 
-    public Villa() {
+    public Villa(String id, String serviceName, float usableArea, int rentalCost, int maxinumNumberOfPeople, String rentType, int numberOfTimesToRent) {
+        super(id, serviceName, usableArea, rentalCost, maxinumNumberOfPeople, rentType, numberOfTimesToRent);
     }
 
-
-    public Villa(String idFacility,
-                 String nameService,
-                 double areaUse,
-                 int rentalPrice,
-                 int rentalPeopleMax,
-                 String styleRental,
-                 String standardVilla,
-                 double arePool,
-                 int floor) {
-        super(idFacility, nameService, areaUse, rentalPrice, rentalPeopleMax, styleRental);
-        this.standardVilla = standardVilla;
-        this.arePool = arePool;
-        this.floor = floor;
-
+    public Villa(String id, String serviceName, float usableArea, int rentalCost, int maxinumNumberOfPeople, String rentType, int numberOfTimesToRent, String roomStandard, float poolArea, int numberOfFloors) {
+        super(id, serviceName, usableArea, rentalCost, maxinumNumberOfPeople, rentType, numberOfTimesToRent);
+        this.roomStandard = roomStandard;
+        this.poolArea = poolArea;
+        this.numberOfFloors = numberOfFloors;
     }
 
-    public String getStandardVilla() {
-        return standardVilla;
+    public String getRoomStandard() {
+        return roomStandard;
     }
 
-    public void setStandardVilla(String standardVilla) {
-        this.standardVilla = standardVilla;
+    public void setRoomStandard(String roomStandard) {
+        this.roomStandard = roomStandard;
     }
 
-    public double getArePool() {
-        return arePool;
+    public float getPoolArea() {
+        return poolArea;
     }
 
-    public void setArePool(double arePool) {
-        this.arePool = arePool;
+    public void setPoolArea(float poolArea) {
+        this.poolArea = poolArea;
     }
 
-    public int getFloor() {
-        return floor;
+    public int getNumberOfFloors() {
+        return numberOfFloors;
     }
 
-    public void setFloor(int floor) {
-        this.floor = floor;
+    public void setNumberOfFloors(int numberOfFloors) {
+        this.numberOfFloors = numberOfFloors;
     }
 
     @Override
     public String toString() {
-        return "Villa{" + super.toString() +
-                "standardVilla='" + standardVilla + '\'' +
-                ", arePool=" + arePool +
-                ", floor=" + floor +
+        return "Villa{" +
+                super.toString() +
+                ", roomStandard='" + roomStandard + '\'' +
+                ", poolArea=" + poolArea +
+                ", numberOfFloors=" + numberOfFloors +
                 '}';
+    }
+
+    public String getInfoToWriteCSV() {
+        return this.getId() + "," + this.getServiceName() + "," + this.getUsableArea() + "," + this.getRentalCost() +
+                "," + this.getMaxinumNumberOfPeople() + "," + this.getRentType() + "," + this.getNumberOfTimesToRent() + "," +
+                this.getRoomStandard() + "," + this.getPoolArea() + "," + this.getNumberOfFloors();
     }
 }

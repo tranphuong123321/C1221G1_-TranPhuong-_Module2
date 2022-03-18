@@ -1,41 +1,52 @@
 package case_study.models;
 
-import java.io.Serializable;
-
-public class Employee extends Person implements Serializable {
-
-    private String level;
-    private String position;
-    private String salary;
-
-    public Employee() {
-
+public class Employee extends Person {
+    public enum Qualification {
+        INTERMEDIATE("Intermediate"),
+        COLLEGE("College"),
+        UNDERGRADUATE("Undergraduate"),
+        GRADUATE("Graduate");
+        private final String value;
+        Qualification(final String value) {
+            this.value = value;
+        }
+        public String getValue() { return value; }
+    }
+    public enum Position {
+        RECEPTIONIST("Receptionist"),
+        WAITER("Waiter"),
+        SPECIALIST("Specialist"),
+        SUPERVISOR("Supervisor"),
+        MANAGER("Manager"),
+        DIRECTOR("Director");
+        private final String value;
+        Position(final String value) {
+            this.value = value;
+        }
+        public String getValue() { return value; }
     }
 
+    private String qualification;
+    private String position;
+    private int salary;
 
-    public Employee(String id,
-                    String name,
-                    String age,
-                    String sex,
-                    String idCard,
-                    String numBerPhone,
-                    String email,
-                    String level,
-                    String position,
-                    String salary) {
-        super(id, name, age, sex, idCard, numBerPhone, email);
-        this.level = level;
+    public Employee(int id, String name, String dateOfBirth, String gender, String cmnd, String phoneNumber, String email) {
+        super(id, name, dateOfBirth, gender, cmnd, phoneNumber, email);
+    }
+
+    public Employee(int id, String name, String dateOfBirth, String gender, String cmnd, String phoneNumber, String email, String qualification, String position, int salary) {
+        super(id, name, dateOfBirth, gender, cmnd, phoneNumber, email);
+        this.qualification = qualification;
         this.position = position;
         this.salary = salary;
     }
 
-
-    public String getLevel() {
-        return level;
+    public String getQualification() {
+        return qualification;
     }
 
-    public void setLevel(String level) {
-        this.level = level;
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
     }
 
     public String getPosition() {
@@ -46,11 +57,11 @@ public class Employee extends Person implements Serializable {
         this.position = position;
     }
 
-    public String getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
@@ -58,10 +69,15 @@ public class Employee extends Person implements Serializable {
     public String toString() {
         return "Employee{" +
                 super.toString() +
-                ", level='" + level + '\'' +
-                ", position='" + position + '\'' +
-                ", salary='" + salary + '\'' +
+                ", qualification=" + qualification +
+                ", position=" + position +
+                ", salary=" + salary +
                 '}';
     }
 
+    public String getInfoToWriteCSV() {
+        return this.getId() + "," + this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() +
+                "," + this.getCmnd() + "," + this.getPhoneNumber() + "," + this.getEmail() +
+                "," + this.getQualification() + "," + this.getPosition() + "," + this.getSalary();
+    }
 }

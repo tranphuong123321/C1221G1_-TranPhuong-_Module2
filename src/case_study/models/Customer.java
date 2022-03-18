@@ -1,32 +1,38 @@
 package case_study.models;
 
-public class Customer extends Person {
-    private String typeCustomer;
-    private String address;
-
-    public Customer() {
+public class Customer extends Person{
+    public enum CustomerType {
+        DIAMOND("Diamond"),
+        PLATIUM("Platinium"),
+        GOLD("Gold"),
+        SILVER("Silver"),
+        MEMBER("Member");
+        private final String value;
+        CustomerType(final String value) {
+            this.value = value;
+        }
+        public String getValue() { return value; }
     }
 
-    public Customer(String id,
-                    String name,
-                    String age,
-                    String sex,
-                    String idCard,
-                    String numBerPhone,
-                    String email,
-                    String typeCustomer,
-                    String address) {
-        super(id, name, age, sex, idCard, numBerPhone, email);
-        this.typeCustomer = typeCustomer;
+    private String customerType;
+    private String address;
+
+    public Customer(int id, String name, String dateOfBirth, String gender, String cmnd, String phoneNumber, String email) {
+        super(id, name, dateOfBirth, gender, cmnd, phoneNumber, email);
+    }
+
+    public Customer(int id, String name, String dateOfBirth, String gender, String cmnd, String phoneNumber, String email, String customerType, String address) {
+        super(id, name, dateOfBirth, gender, cmnd, phoneNumber, email);
+        this.customerType = customerType;
         this.address = address;
     }
 
-    public String getTypeCustomer() {
-        return typeCustomer;
+    public String getCustomerType() {
+        return customerType;
     }
 
-    public void setTypeCustomer(String typeCustomer) {
-        this.typeCustomer = typeCustomer;
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
     }
 
     public String getAddress() {
@@ -38,10 +44,17 @@ public class Customer extends Person {
     }
 
     @Override
-    public String toString() {
-        return "customer{" + super.toString() +
-                ", typeCustomer='" + typeCustomer + '\'' +
+    public java.lang.String toString() {
+        return "Customer{" +
+                super.toString() +
+                ", customerType='" + customerType + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public java.lang.String getInfoToWriteCSV() {
+        return this.getId() + "," + this.getName() + "," + this.getDateOfBirth() + "," + this.getGender() +
+                "," + this.getCmnd() + "," + this.getPhoneNumber() + "," + this.getEmail() +
+                "," + this.getCustomerType() + "," + this.getAddress();
     }
 }

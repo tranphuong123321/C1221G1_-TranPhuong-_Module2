@@ -3,17 +3,12 @@ package case_study.models;
 public class Room extends Facility{
     private String freeServiceIncluded;
 
-    public Room() {
+    public Room(String id, String serviceName, float usableArea, int rentalCost, int maxinumNumberOfPeople, String rentType, int numberOfTimesToRent) {
+        super(id, serviceName, usableArea, rentalCost, maxinumNumberOfPeople, rentType, numberOfTimesToRent);
     }
 
-    public Room(String idFacility,
-                String nameService,
-                double areaUse,
-                int rentalPrice,
-                int rentalPeopleMax,
-                String styleRental,
-                String freeServiceIncluded) {
-        super(idFacility, nameService, areaUse, rentalPrice, rentalPeopleMax, styleRental);
+    public Room(String id, String serviceName, float usableArea, int rentalCost, int maxinumNumberOfPeople, String rentType, int numberOfTimesToRent, String freeServiceIncluded) {
+        super(id, serviceName, usableArea, rentalCost, maxinumNumberOfPeople, rentType, numberOfTimesToRent);
         this.freeServiceIncluded = freeServiceIncluded;
     }
 
@@ -27,8 +22,16 @@ public class Room extends Facility{
 
     @Override
     public String toString() {
-        return "Room{" + super.toString() +
-                "freeServiceIncluded='" + freeServiceIncluded + '\'' +
+        return "Room{" +
+                super.toString() +
+                ", freeServiceIncluded='" + freeServiceIncluded + '\'' +
                 '}';
+    }
+
+    public String getInfoToWriteCSV() {
+        return this.getId() + "," + this.getServiceName() + "," + this.getUsableArea() + "," + this.getRentalCost() +
+                "," + this.getMaxinumNumberOfPeople() + "," + this.getRentType() + "," + this.getNumberOfTimesToRent() + "," +
+                this.getFreeServiceIncluded();
+
     }
 }

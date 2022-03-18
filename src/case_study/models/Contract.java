@@ -1,71 +1,76 @@
 package case_study.models;
 
 public class Contract {
-    private String idContract;
-    private Booking idBooking;
-    private String prePayment;
-    private String totalPayment;
-    private Customer idCustomer;
+    private int contractNumber;
+    private String bookingId;
+    private float advanceDepositAmount;
+    private float totalPaymentAmount;
+    private Customer customerId;
 
-    public Contract() {
+    public Contract() {}
+
+    public Contract(int contractNumber, String bookingId, float advanceDepositAmount, float totalPaymentAmount, Customer customerId) {
+        this.contractNumber = contractNumber;
+        this.bookingId = bookingId;
+        this.advanceDepositAmount = advanceDepositAmount;
+        this.totalPaymentAmount = totalPaymentAmount;
+        this.customerId = customerId;
     }
 
-    public Contract(String idContract, Booking idBooking, String prePayment, String totalPayment, Customer idCustomer) {
-        this.idContract = idContract;
-        this.idBooking = idBooking;
-        this.prePayment = prePayment;
-        this.totalPayment = totalPayment;
-        this.idCustomer = idCustomer;
+    public int getContractNumber() {
+        return contractNumber;
     }
 
-    public String getIdContract() {
-        return idContract;
+    public void setContractNumber(int contractNumber) {
+        this.contractNumber = contractNumber;
     }
 
-    public void setIdContract(String idContract) {
-        this.idContract = idContract;
+    public String getBookingId() {
+        return bookingId;
     }
 
-    public Booking getIdBooking() {
-        return idBooking;
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
 
-    public void setIdBooking(Booking idBooking) {
-        this.idBooking = idBooking;
+    public float getAdvanceDepositAmount() {
+        return advanceDepositAmount;
     }
 
-    public String getPrePayment() {
-        return prePayment;
+    public void setAdvanceDepositAmount(float advanceDepositAmount) {
+        this.advanceDepositAmount = advanceDepositAmount;
     }
 
-    public void setPrePayment(String prePayment) {
-        this.prePayment = prePayment;
+    public float getTotalPaymentAmount() {
+        return totalPaymentAmount;
     }
 
-    public String getTotalPayment() {
-        return totalPayment;
+    public void setTotalPaymentAmount(float totalPaymentAmount) {
+        this.totalPaymentAmount = totalPaymentAmount;
     }
 
-    public void setTotalPayment(String totalPayment) {
-        this.totalPayment = totalPayment;
+    public Customer getCustomerId() {
+        return customerId;
     }
 
-    public Customer getIdCustomer() {
-        return idCustomer;
-    }
-
-    public void setIdCustomer(Customer idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setCustomerId(Customer customerId) {
+        this.customerId = customerId;
     }
 
     @Override
     public String toString() {
         return "Contract{" +
-                "idContract='" + idContract + '\'' +
-                ", idBooking=" + idBooking +
-                ", prePayment='" + prePayment + '\'' +
-                ", totalPayment='" + totalPayment + '\'' +
-                ", idCustomer=" + idCustomer +
+                "contractNumber=" + contractNumber +
+                ", bookingId='" + bookingId + '\'' +
+                ", advanceDepositAmount=" + advanceDepositAmount +
+                ", totalPaymentAmount=" + totalPaymentAmount +
+                ", customerId=" + customerId.getId() +
                 '}';
+    }
+
+    public String getInfoToWriteCSV() {
+        return this.getContractNumber() + "," + this.getBookingId() + "," +
+                this.getAdvanceDepositAmount() + "," + this.getTotalPaymentAmount() +
+                "," + this.getCustomerId().getId();
     }
 }

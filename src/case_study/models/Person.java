@@ -1,33 +1,30 @@
 package case_study.models;
 
 public abstract class Person {
-    private String id;
+
+    private int id;
     private String name;
-    private String age;
-    private String sex;
-    private String idCard;
-    private String numBerPhone;
+    private String dateOfBirth;
+    private String gender;
+    private String cmnd;
+    private String phoneNumber;
     private String email;
 
-    public Person() {
-
-    }
-
-    public Person(String id, String name, String age, String sex, String idCard, String numBerPhone, String email) {
+    public Person(int id, String name, String dateOfBirth, String gender, String cmnd, String phoneNumber, String email) {
         this.id = id;
         this.name = name;
-        this.age = age;
-        this.sex = sex;
-        this.idCard = idCard;
-        this.numBerPhone = numBerPhone;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.cmnd = cmnd;
+        this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -39,36 +36,36 @@ public abstract class Person {
         this.name = name;
     }
 
-    public String getAge() {
-        return age;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getIdCard() {
-        return idCard;
+    public String getCmnd() {
+        return cmnd;
     }
 
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
-    public String getNumBerPhone() {
-        return numBerPhone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setNumBerPhone(String numBerPhone) {
-        this.numBerPhone = numBerPhone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -81,13 +78,12 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return
-                "id='" + id + '\'' +
+        return "id=" + id +
                 ", name='" + name + '\'' +
-                ", age='" + age + '\'' +
-                ", sex='" + sex + '\'' +
-                ", idCard='" + idCard + '\'' +
-                ", numBerPhone='" + numBerPhone + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", cmnd='" + cmnd + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'';
     }
 }

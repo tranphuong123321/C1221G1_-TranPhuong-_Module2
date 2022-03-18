@@ -1,72 +1,109 @@
 package case_study.models;
 
-public class Booking extends Facility {
-    private Integer idBooking;
-    private String startDate;
-    private String enDate;
-    private Customer customer;
-    private Facility facility;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Objects;
+
+public class Booking  {
+    private String bookingId;
+    private String startDay;
+    private String endDay;
+    private Customer customerId;
+    private String serviceId;
+    private String serviceType;
 
     public Booking() {
-
     }
 
-    public Booking(Integer idBooking, String startDate, String enDate, Customer customer, Facility facility) {
-        this.idBooking = idBooking;
-        this.startDate = startDate;
-        this.enDate = enDate;
-        this.customer = customer;
-        this.facility = facility;
+    public Booking(String bookingId, String startDay, String endDay, Customer customerId, String serviceId, String serviceType) {
+        this.bookingId = bookingId;
+        this.startDay = startDay;
+        this.endDay = endDay;
+        this.customerId = customerId;
+        this.serviceId = serviceId;
+        this.serviceType = serviceType;
     }
 
-    public Integer getIdBooking() {
-        return idBooking;
+    public String getBookingId() {
+        return bookingId;
     }
 
-    public void setIdBooking(Integer idBooking) {
-        this.idBooking = idBooking;
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getStartDay() {
+        return startDay;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartDay(String startDay) {
+        this.startDay = startDay;
     }
 
-    public String getEnDate() {
-        return enDate;
+    public String getEndDay() {
+        return endDay;
     }
 
-    public void setEnDate(String enDate) {
-        this.enDate = enDate;
+    public void setEndDay(String endDay) {
+        this.endDay = endDay;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Customer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(Customer customerId) {
+        this.customerId = customerId;
     }
 
-    public Facility getFacility() {
-        return facility;
+    public String getServiceName() {
+        return serviceId;
     }
 
-    public void setFacility(Facility facility) {
-        this.facility = facility;
+    public void setServiceName(String serviceName) {
+        this.serviceId = serviceName;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
     }
 
     @Override
     public String toString() {
-        return "Booking{" + super.toString() +
-                "idBooking=" + idBooking +
-                ", startDate='" + startDate + '\'' +
-                ", enDate='" + enDate + '\'' +
-                ", customer=" + customer +
-                ", facility=" + facility +
+        return "Booking{" +
+                "bookingId='" + bookingId + '\'' +
+                ", startDay=" + startDay +
+                ", endDay=" + endDay +
+                ", customerId=" + customerId.getId() +
+                ", serviceName='" + serviceId + '\'' +
+                ", serviceType='" + serviceType + '\'' +
                 '}';
+    }
+
+    public String getInfoToWriteCSV() {
+        return this.getBookingId() + "," + this.getStartDay() + "," + this.getEndDay() +
+                "," + this.getCustomerId().getId() + "," + this.getServiceName() + "," + this.getServiceType();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(startDay, booking.startDay) &&
+                Objects.equals(endDay, booking.endDay) &&
+                Objects.equals(serviceId, booking.serviceId) &&
+                Objects.equals(serviceType, booking.serviceType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startDay, endDay, customerId, serviceId, serviceType);
     }
 }

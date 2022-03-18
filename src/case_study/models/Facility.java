@@ -1,84 +1,98 @@
 package case_study.models;
 
 public abstract class Facility {
-    private String idFacility;
-    private String nameService;
-    private double areaUse;
-    private int rentalPrice;
-    private int rentalPeopleMax;
-    private String styleRental;
+    public enum RentType {
+        YEAR("Year"),
+        MONTH("Month"),
+        DAY("Day"),
+        HOUR("Hour");
+        private final String value;
+        RentType(final String value) {
+            this.value = value;
+        }
+        public String getValue() { return value; }
+    }
+    private String id;
+    private String serviceName;
+    private float usableArea;
+    private int rentalCost;
+    private int maxinumNumberOfPeople;
+    private String rentType;
+    private int numberOfTimesToRent;
 
-    public Facility() {
+    public Facility(String id, String serviceName, float usableArea, int rentalCost, int maxinumNumberOfPeople, String rentType, int numberOfTimesToRent) {
+        this.id = id;
+        this.serviceName = serviceName;
+        this.usableArea = usableArea;
+        this.rentalCost = rentalCost;
+        this.maxinumNumberOfPeople = maxinumNumberOfPeople;
+        this.rentType = rentType;
+        this.numberOfTimesToRent = numberOfTimesToRent;
     }
 
-    public Facility(String idFacility, String nameService, double areaUse, int rentalPrice, int rentalPeopleMax, String styleRental) {
-        this.idFacility = idFacility;
-        this.nameService = nameService;
-        this.areaUse = areaUse;
-        this.rentalPrice = rentalPrice;
-        this.rentalPeopleMax = rentalPeopleMax;
-        this.styleRental = styleRental;
+    public String getId() {
+        return id;
     }
 
-    public String getIdFacility() {
-        return idFacility;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setIdFacility(String idFacility) {
-        this.idFacility = idFacility;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public String getNameService() {
-        return nameService;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
-    public void setNameService(String nameService) {
-        this.nameService = nameService;
+    public float getUsableArea() {
+        return usableArea;
     }
 
-    public double getAreaUse() {
-        return areaUse;
+    public void setUsableArea(float usableArea) {
+        this.usableArea = usableArea;
     }
 
-    public void setAreaUse(double areaUse) {
-        this.areaUse = areaUse;
+    public int getRentalCost() {
+        return rentalCost;
     }
 
-    public int getRentalPrice() {
-        return rentalPrice;
+    public void setRentalCost(int rentalCost) {
+        this.rentalCost = rentalCost;
     }
 
-    public void setRentalPrice(int rentalPrice) {
-        this.rentalPrice = rentalPrice;
+    public int getMaxinumNumberOfPeople() {
+        return maxinumNumberOfPeople;
     }
 
-    public int getRentalPeopleMax() {
-        return rentalPeopleMax;
+    public void setMaxinumNumberOfPeople(int maxinumNumberOfPeople) {
+        this.maxinumNumberOfPeople = maxinumNumberOfPeople;
     }
 
-    public void setRentalPeopleMax(int rentalPeopleMax) {
-        this.rentalPeopleMax = rentalPeopleMax;
+    public String getRentType() {
+        return rentType;
     }
 
-    public String getStyleRental() {
-        return styleRental;
+    public void setRentType(String rentType) {
+        this.rentType = rentType;
     }
 
-    public void setStyleRental(String styleRental) {
-        this.styleRental = styleRental;
+    public void setNumberOfTimesToRent(int numberOfTimesToRent) {
+        this.numberOfTimesToRent = numberOfTimesToRent;
+    }
+
+    public int getNumberOfTimesToRent() {
+        return numberOfTimesToRent;
     }
 
     @Override
     public String toString() {
-        return
-                "idFacility='" + idFacility + '\'' +
-                ", nameService='" + nameService + '\'' +
-                ", areaUse=" + areaUse +
-                ", rentalPrice=" + rentalPrice +
-                ", rentalPeopleMax=" + rentalPeopleMax +
-                ", styleRental='" + styleRental + '\'' +
-                '}';
+        return "id='" + id + '\'' +
+                "serviceName='" + serviceName + '\'' +
+                ", usableArea=" + usableArea +
+                ", rentalCost=" + rentalCost +
+                ", maxinumNumberOfPeople=" + maxinumNumberOfPeople +
+                ", rentType='" + rentType;
     }
 }
-
-
