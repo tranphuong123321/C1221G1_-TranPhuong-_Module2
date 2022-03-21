@@ -72,7 +72,8 @@ public class FuramaController {
             System.out.println("1\tDisplay list employees\n" +
                     "2\tAdd new employee\n" +
                     "3\tEdit employee\n" +
-                    "4\tReturn main menu\n");
+                    "4\tReturn main menu\n"+
+                    "5\tDelete\n");
             try {
                 do {
                     System.out.print("Your choice: ");
@@ -80,7 +81,7 @@ public class FuramaController {
                     if (!employeeChoice.matches(CHOICE_REGEX)) {
                         System.out.println("Please try again.\n");
                     }
-                    Exceptions.CheckChoiceNumberFrom1To4(employeeChoice);
+                    Exceptions.CheckChoiceNumberFrom1To5(employeeChoice);
                 } while (!employeeChoice.matches(CHOICE_REGEX));
             } catch (ControllerException e) {
                 e.printStackTrace();
@@ -103,6 +104,10 @@ public class FuramaController {
                     System.out.println("Return main menu.\n");
                     flag = false;
                     break;
+                case 5:
+                    employee.delete();
+                    System.out.println("Delete employee success!");
+                    break;
             }
         } while (flag);
     }
@@ -115,7 +120,8 @@ public class FuramaController {
             System.out.println("1\tDisplay list customers\n" +
                     "2\tAdd new customer\n" +
                     "3\tEdit customer\n" +
-                    "4\tReturn main menu\n");
+                    "4\tReturn main menu\n"+
+                    "5\tDelete\n");
             try {
                 do {
                     System.out.print("Your choice: ");
@@ -124,7 +130,7 @@ public class FuramaController {
                         System.out.println("Please try again.\n");
                     }
                 } while (!customerChoice.matches(CHOICE_REGEX));
-                Exceptions.CheckChoiceNumberFrom1To4(customerChoice);
+                Exceptions.CheckChoiceNumberFrom1To5(customerChoice);
             } catch (ControllerException e) {
                 e.printStackTrace();
             }
@@ -144,6 +150,10 @@ public class FuramaController {
                 case 4:
                     System.out.println("Return main menu.\n");
                     flag = false;
+                    break;
+                case 5:
+                    customer.delete();
+                    System.out.println("Delete customer success!");
                     break;
             }
         } while (flag);

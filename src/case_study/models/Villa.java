@@ -7,11 +7,16 @@ public class Villa extends Facility {
         GOLD("Gold"),
         SILVER("Silver");
         private final String value;
+
         RoomStandard(final String value) {
             this.value = value;
         }
-        public String getValue() { return value; }
+
+        public String getValue() {
+            return value;
+        }
     }
+
     private String roomStandard;
     private float poolArea;
     private int numberOfFloors;

@@ -109,6 +109,7 @@ public class FacilityServiceImpl implements IFacilityService {
         Map<Room, Integer> roomMap = ReadAndWriteCSVFile.readRoomFromCSVFile(ROOM_FILE_PATH);
         System.out.println("-----------Facility maintenance list-----------");
         Set<Villa> villaSet = villaMap.keySet();
+
         for (Villa key : villaSet) {
             if (villaMap.get(key) > 5 || villaMap.get(key) == 5) {
                 System.out.println(key + ", number of times to rent: " + villaMap.get(key));
@@ -126,7 +127,6 @@ public class FacilityServiceImpl implements IFacilityService {
                 System.out.println(key + ", number of times to rent: " + roomMap.get(key));
             }
         }
-
     }
 
     private static void addNewVilla() {

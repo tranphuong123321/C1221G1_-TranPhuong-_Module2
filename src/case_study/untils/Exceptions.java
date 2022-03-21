@@ -6,6 +6,11 @@ public class Exceptions {
             throw new ControllerException("Your choice must from 1 to 6");
         }
     }
+    public static void CheckChoiceNumberFrom1To5(String chooseMenu) throws ControllerException {
+        if (Integer.parseInt(chooseMenu) != 1 && Integer.parseInt(chooseMenu) != 2 && Integer.parseInt(chooseMenu) != 3 && Integer.parseInt(chooseMenu) != 4 && Integer.parseInt(chooseMenu) != 5 ) {
+            throw new ControllerException("Your choice must from 1 to 5");
+        }
+    }
 
     public static void CheckChoiceNumberFrom1To4(String chooseMenu) throws ControllerException {
         if (Integer.parseInt(chooseMenu) != 1 && Integer.parseInt(chooseMenu) != 2 && Integer.parseInt(chooseMenu) != 3 && Integer.parseInt(chooseMenu) != 4) {

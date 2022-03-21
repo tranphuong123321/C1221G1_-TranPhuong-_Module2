@@ -1,5 +1,7 @@
 package case_study.services.impl;
 
+import case_study.controllers.FuramaController;
+import case_study.models.Customer;
 import case_study.models.Employee;
 import case_study.services.IEmployeeService;
 import case_study.untils.ReadAndWriteCSVFile;
@@ -25,6 +27,33 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
     Scanner sc = new Scanner(System.in);
+
+    @Override
+    public void delete() {
+        FuramaController furamaController= new FuramaController();
+        List<Employee> employeeList = ReadAndWriteCSVFile.readEmployeeFromCSVFile(EMPLOYEE_FILE_PATH);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the id you want to delete");
+        int checkId = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < employeeList.size(); i++) {
+
+            if (employeeList.get(i).getId() == checkId) {
+                System.out.println("Do you want to delete");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                int choice=Integer.parseInt(scanner.nextLine());
+                switch (choice){
+                    case 1:
+                        employeeList.remove(employeeList.get(i));
+                        break;
+                    case 2:
+                        furamaController.displayMainMenu();
+                        break;
+                }
+            }
+            ReadAndWriteCSVFile.writeListToCSVFile(employeeList,EMPLOYEE_FILE_PATH,false);
+        }
+    }
 
     @Override
     public void add() {

@@ -1,6 +1,7 @@
 package case_study.services.impl;
 
 
+import case_study.controllers.FuramaController;
 import case_study.models.Customer;
 import case_study.services.ICustomerService;
 import case_study.untils.ReadAndWriteCSVFile;
@@ -11,7 +12,6 @@ import java.util.LinkedList;
 
 import java.util.List;
 import java.util.Scanner;
-
 
 
 public class CustomerServiceImpl implements ICustomerService {
@@ -25,8 +25,35 @@ public class CustomerServiceImpl implements ICustomerService {
     public final String CMND_REGEX = "^\\d{9}$";
     public final String VN_PHONE_NUMBER_REGEX = "^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$";
     public final String EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-   // public final String EMAIL_REGEX = "^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+    // public final String EMAIL_REGEX = "^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
     Scanner sc = new Scanner(System.in);
+
+    @Override
+    public void delete() {
+        FuramaController furamaController= new FuramaController();
+        List<Customer> customerList = ReadAndWriteCSVFile.readCustomerFromCVSFile(CUSTOMER_FILE_PATH);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the id you want to delete");
+        int checkId = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < customerList.size(); i++) {
+
+            if (customerList.get(i).getId() == checkId) {
+                System.out.println("Do you want to delete");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                int choice=Integer.parseInt(scanner.nextLine());
+                switch (choice){
+                    case 1:
+                        customerList.remove(customerList.get(i));
+                        break;
+                    case 2:
+                        furamaController.displayMainMenu();
+                        break;
+                }
+            }
+            ReadAndWriteCSVFile.writeListToCSVFile(customerList,CUSTOMER_FILE_PATH,false);
+        }
+    }
 
     @Override
     public void add() {

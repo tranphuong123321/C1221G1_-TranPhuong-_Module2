@@ -28,7 +28,7 @@ public class PromotionServiceImpl implements IPromotionService {
             System.out.print("Enter year: ");
             yearInput = sc.nextLine();
             if (!yearInput.matches(YEAR_REGEX)) {
-                System.out.println("Please try again.\n");
+                System.out.println("Please try again,yyyy.\n");
             }
         } while (!yearInput.matches(YEAR_REGEX));
         System.out.println("--------------Customer list book in " + yearInput + "--------------");
